@@ -187,6 +187,7 @@ llms/                        # llms 文档目录
 - [ ] 部署 cf 命令
 - [ ] 添加合约读取写入界面
 - [ ] 修复控制台错误
+- [ ] 优化 useComputedState，UI 显示到一定是字符串，然后要有默认值（初始化或不存在的显示）
 - [ ] ky，对幂等请求加自动重试，结合后端库，TypeScript：给返回值一个“强类型出口”
 - [ ] 优化 tanstack query，添加 @lukemorales/query-key-factory 的支持和例子
   - 读操作不要使用 toast 提示（可使用静态组件显示错误），刷新读取可使用 toast

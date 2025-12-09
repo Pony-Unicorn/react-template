@@ -46,6 +46,17 @@ export function SiteHeader() {
           >
             预览
           </NavLink>
+          <NavLink
+            to="/contract"
+            className={({ isActive }) =>
+              cn(
+                'hover:text-foreground/80 text-sm font-medium transition-colors',
+                isActive ? 'text-primary' : 'text-foreground/60'
+              )
+            }
+          >
+            合约
+          </NavLink>
 
           <NavLink
             to="/about"

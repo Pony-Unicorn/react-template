@@ -131,16 +131,7 @@ function ZustandComputedStateSection() {
     updateFirstName,
     updateLastName,
     updateAge,
-  } = usePersonStore(
-    useShallow((state) => ({
-      firstName: state.firstName,
-      lastName: state.lastName,
-      age: state.age,
-      updateFirstName: state.updateFirstName,
-      updateLastName: state.updateLastName,
-      updateAge: state.updateAge,
-    }))
-  )
+  } = usePersonStore(useShallow((s) => s))
 
   const fullName = usePersonStore(selectFullName)
   const isAdult = usePersonStore(selectIsAdult)
