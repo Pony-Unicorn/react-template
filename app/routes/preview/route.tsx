@@ -39,11 +39,9 @@ export default function Preview() {
 }
 
 function UseComputedStateSection() {
-  const { realValue, setRealValue, displayValue } = useComputedState<
-    number,
-    string
-  >(1000, (v) =>
-    v.toLocaleString('zh-CN', { style: 'currency', currency: 'CNY' })
+  const { realValue, setRealValue, displayValue } = useComputedState<number>(
+    1000,
+    (v) => v.toLocaleString('zh-CN', { style: 'currency', currency: 'CNY' })
   )
 
   const squared = useMemo(() => realValue * realValue, [realValue])

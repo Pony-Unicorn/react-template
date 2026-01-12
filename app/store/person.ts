@@ -12,13 +12,6 @@ type Action = {
   updateAge: (age: State['age']) => void
 }
 
-// 计算状态选择器 - 类似 useComputedState
-type ComputedState = {
-  fullName: string
-  isAdult: boolean
-  initials: string
-}
-
 export const usePersonStore = create<State & Action>((set) => ({
   firstName: '',
   lastName: '',

@@ -1,7 +1,6 @@
 // see https://github.com/vitejs/awesome-vite
 
 import { reactRouter } from '@react-router/dev/vite'
-import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import removeConsole from 'vite-plugin-remove-console'
@@ -9,7 +8,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
     reactRouter(),
     tsconfigPaths(),
     removeConsole(),

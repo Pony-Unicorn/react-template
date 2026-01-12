@@ -40,34 +40,35 @@ import { useCallback, useMemo, useState } from 'react'
  * ```
  *
  * ### ⚙️ 默认 compute（无需自定义）
+ * 模拟 useQuery 封装
  * ```tsx
  * const { realValue, displayValue, setRealValue } = useComputedState("hello");
  * // compute 默认为 v => v
  * // displayValue === realValue
  * ```
+  - 真实值（number、bigint、string）、显示值（string）、更新真实值函数=初始值、计算函数、
+  - 最佳实践：数据获取中使用 Skeleton 组件，数据获取失败整个区域/卡片显示错误提示，数据获取成功使用 compute 格式化显示
+  - 数据缺失/不适用（null/undefined/nan/ ""/0/0n ）使用简洁的 “--”
  */
-export function useComputedState<T, U = T>(
+
+export type RealValueType = number | bigint | string
+
+const defaultCompute = (v: RealValueType) => v.toString()
+
+export function useComputedState<T extends RealValueType>(
   initialValue: T,
-  compute?: (value: T) => U
+  compute: (value: T) => string = defaultCompute
 ) {
   const [realValue, setRealValue] = useState<T>(initialValue)
 
   // 根据 realValue 计算派生值
   const displayValue = useMemo(() => {
-    if (compute) {
-      try {
-        return compute(realValue)
-      } catch (error) {
-        console.warn(
-          'useComputedState: compute function threw an error:',
-          error
-        )
-        // 降级到恒等函数
-        return realValue as unknown as U
-      }
+    try {
+      return compute(realValue)
+    } catch (error) {
+      console.warn('useComputedState compute error:', error)
+      return defaultCompute(realValue)
     }
-    // 当 U = T 时，直接返回 realValue 是类型安全的
-    return realValue as unknown as U
   }, [realValue, compute])
 
   // 支持函数式更新（与 useState 相同）
