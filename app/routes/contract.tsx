@@ -1,3 +1,13 @@
+import {
+  Box,
+  Button,
+  Card,
+  Code,
+  Flex,
+  Heading,
+  Text,
+  TextField,
+} from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { formatUnits, parseUnits, type Address } from 'viem'
@@ -8,14 +18,6 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from 'wagmi'
-import { Button } from '~/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card'
 import USDTAbi from '~/constants/USDT.abi'
 import { usdtAddress } from '~/constants/app'
 
@@ -120,29 +122,27 @@ export default function Page() {
 
   if (!isConnected) {
     return (
-      <div className="container mx-auto max-w-4xl py-8">
+      <Box p="6" maxWidth="800px" mx="auto">
         <Card>
-          <CardHeader>
-            <CardTitle>USDT 合约交互</CardTitle>
-            <CardDescription>请先连接钱包</CardDescription>
-          </CardHeader>
+          <Heading size="4" mb="2">
+            USDT 合约交互
+          </Heading>
+          <Text color="gray">请先连接钱包</Text>
         </Card>
-      </div>
+      </Box>
     )
   }
 
   if (!contractAddress) {
     return (
-      <div className="container mx-auto max-w-4xl py-8">
+      <Box p="6" maxWidth="800px" mx="auto">
         <Card>
-          <CardHeader>
-            <CardTitle>USDT 合约交互</CardTitle>
-            <CardDescription>
-              当前链不支持，请切换到主网或 Sepolia 测试网
-            </CardDescription>
-          </CardHeader>
+          <Heading size="4" mb="2">
+            USDT 合约交互
+          </Heading>
+          <Text color="gray">当前链不支持，请切换到主网或 Sepolia 测试网</Text>
         </Card>
-      </div>
+      </Box>
     )
   }
 
@@ -155,107 +155,105 @@ export default function Page() {
       : '0'
 
   return (
-    <div className="container mx-auto max-w-4xl space-y-6 py-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Token 信息</CardTitle>
-          <CardDescription>USDT 合约的基本信息</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">名称:</span>
-            <span className="font-medium">{tokenName || '-'}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">符号:</span>
-            <span className="font-medium">{tokenSymbol || '-'}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">精度:</span>
-            <span className="font-medium">{decimals?.toString() || '-'}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">总供应量:</span>
-            <span className="font-medium">
-              {formattedTotalSupply} {tokenSymbol}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">合约地址:</span>
-            <span className="font-mono text-sm">{contractAddress}</span>
-          </div>
-        </CardContent>
-      </Card>
+    <Box p="6" maxWidth="800px" mx="auto">
+      <Flex direction="column" gap="4">
+        <Card>
+          <Heading size="4" mb="2">
+            Token 信息
+          </Heading>
+          <Text size="2" color="gray" mb="4">
+            USDT 合约的基本信息
+          </Text>
+          <Flex direction="column" gap="2">
+            <Flex justify="between">
+              <Text color="gray">名称:</Text>
+              <Text weight="medium">{tokenName || '-'}</Text>
+            </Flex>
+            <Flex justify="between">
+              <Text color="gray">符号:</Text>
+              <Text weight="medium">{tokenSymbol || '-'}</Text>
+            </Flex>
+            <Flex justify="between">
+              <Text color="gray">精度:</Text>
+              <Text weight="medium">{decimals?.toString() || '-'}</Text>
+            </Flex>
+            <Flex justify="between">
+              <Text color="gray">总供应量:</Text>
+              <Text weight="medium">
+                {formattedTotalSupply} {tokenSymbol}
+              </Text>
+            </Flex>
+            <Flex justify="between">
+              <Text color="gray">合约地址:</Text>
+              <Code size="1">{contractAddress}</Code>
+            </Flex>
+          </Flex>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>我的余额</CardTitle>
-          <CardDescription>当前账户的 USDT 余额</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold">{formattedBalance}</span>
-            <span className="text-muted-foreground text-lg">{tokenSymbol}</span>
-          </div>
-          <div className="text-muted-foreground mt-2 text-sm">
+        <Card>
+          <Heading size="4" mb="2">
+            我的余额
+          </Heading>
+          <Text size="2" color="gray" mb="4">
+            当前账户的 USDT 余额
+          </Text>
+          <Flex align="baseline" gap="2">
+            <Text size="8" weight="bold">
+              {formattedBalance}
+            </Text>
+            <Text size="4" color="gray">
+              {tokenSymbol}
+            </Text>
+          </Flex>
+          <Text size="1" color="gray" mt="2">
             地址: {address}
-          </div>
-        </CardContent>
-      </Card>
+          </Text>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>转账</CardTitle>
-          <CardDescription>向其他地址转账 USDT</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <label
-              htmlFor="recipient"
-              className="text-sm leading-none font-medium"
+        <Card>
+          <Heading size="4" mb="2">
+            转账
+          </Heading>
+          <Text size="2" color="gray" mb="4">
+            向其他地址转账 USDT
+          </Text>
+          <Flex direction="column" gap="4">
+            <Box>
+              <Text as="label" size="2" weight="medium" mb="1">
+                接收地址
+              </Text>
+              <TextField.Root
+                placeholder="0x..."
+                value={recipient}
+                onChange={(e) => setRecipient(e.target.value)}
+              />
+            </Box>
+
+            <Box>
+              <Text as="label" size="2" weight="medium" mb="1">
+                转账金额
+              </Text>
+              <TextField.Root
+                type="number"
+                placeholder="0.0"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </Box>
+
+            <Button
+              onClick={handleTransfer}
+              disabled={!recipient || !amount || isWritePending || isConfirming}
             >
-              接收地址
-            </label>
-            <input
-              id="recipient"
-              type="text"
-              placeholder="0x..."
-              value={recipient}
-              onChange={(e) => setRecipient(e.target.value)}
-              className="bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full rounded-md border px-3 py-1 text-sm transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label
-              htmlFor="amount"
-              className="text-sm leading-none font-medium"
-            >
-              转账金额
-            </label>
-            <input
-              id="amount"
-              type="number"
-              placeholder="0.0"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full rounded-md border px-3 py-1 text-sm transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-            />
-          </div>
-
-          <Button
-            onClick={handleTransfer}
-            disabled={!recipient || !amount || isWritePending || isConfirming}
-            className="w-full"
-          >
-            {isWritePending
-              ? '等待钱包确认...'
-              : isConfirming
-                ? '交易确认中...'
-                : '转账'}
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
+              {isWritePending
+                ? '等待钱包确认...'
+                : isConfirming
+                  ? '交易确认中...'
+                  : '转账'}
+            </Button>
+          </Flex>
+        </Card>
+      </Flex>
+    </Box>
   )
 }

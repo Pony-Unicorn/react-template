@@ -1,8 +1,8 @@
-import { Home } from 'lucide-react'
+import { HomeIcon } from '@radix-ui/react-icons'
+import { Box, Button, Code, Flex, Text } from '@radix-ui/themes'
 import { motion } from 'motion/react'
 import { Link } from 'react-router'
 import FuzzyText from '~/components/react-bits/FuzzyText'
-import { Button } from '~/components/ui/button'
 
 interface NotFoundProps {
   message: string
@@ -12,46 +12,55 @@ interface NotFoundProps {
 
 export default function NotFound({ message, details, stack }: NotFoundProps) {
   return (
-    <div className="container mx-auto flex min-h-[60vh] flex-col items-center justify-center px-4 py-16 text-center">
+    <Flex
+      direction="column"
+      align="center"
+      justify="center"
+      py="9"
+      minHeight="60vh"
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-8 flex flex-col items-center justify-center"
       >
-        <div className="mb-5">
-          <FuzzyText
-            baseIntensity={0.3}
-            // hoverIntensity={hoverIntensity}
-            // enableHover={enableHover}
-            color="#ee9a00ff"
-          >
-            {message}
-          </FuzzyText>
-        </div>
+        <Flex direction="column" align="center" gap="4" mb="6">
+          <Box mb="2">
+            <FuzzyText baseIntensity={0.3} color="#ee9a00ff">
+              {message}
+            </FuzzyText>
+          </Box>
 
-        <p className="text-muted-foreground mb-8 max-w-md text-lg">{details}</p>
+          <Text size="4" color="gray" align="center">
+            {details}
+          </Text>
 
-        {stack && (
-          <pre className="w-full overflow-x-auto p-4">
-            <code>{stack}</code>
-          </pre>
-        )}
+          {stack && (
+            <Box
+              p="4"
+              style={{
+                width: '100%',
+                overflow: 'auto',
+              }}
+            >
+              <Code size="1">{stack}</Code>
+            </Box>
+          )}
+        </Flex>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mb-8 flex flex-col gap-4 sm:flex-row sm:gap-3"
       >
-        <Button asChild size="lg">
+        <Button asChild size="3">
           <Link to="/">
-            <Home className="mr-2 h-4 w-4" />
+            <HomeIcon />
             Go Home
           </Link>
         </Button>
       </motion.div>
-    </div>
+    </Flex>
   )
 }

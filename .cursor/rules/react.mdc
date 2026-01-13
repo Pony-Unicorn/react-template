@@ -20,7 +20,6 @@ alwaysApply: true
 - Place all components inside the top-level `components/` directory.
 - Organize the `components/` directory into the following subfolders:
 
-  - `ui/`: Auto-generated UI components from `shadcn/ui`. **Do not edit manually** — these are managed by the generator.
   - `layouts/`: Page layout components such as `MainLayout`, `AuthLayout`.
   - `shared/`: Components reused across multiple pages, such as `Header`, `Footer`.
   - `elements/`: Small, reusable functional components like `Modal`, `Toast`, `Loading`.

@@ -1,24 +1,24 @@
+import { Badge, Box, Card, Flex, Grid, Heading, Text } from '@radix-ui/themes'
 import { motion } from 'motion/react'
 
 import { IS_DEV, VERSION } from '~/constants/app'
 import { env } from '~/constants/env'
 
 import { CopyButton } from '~/components/elements/CopyButton'
-import { Badge } from '~/components/ui/badge'
 
 const features = [
   {
-    title: 'React + shadcn/ui',
+    title: 'React + Radix UI',
     description: '强大且现代的前端 UI 架构',
     icon: '🧱',
   },
   {
-    title: 'Tailwind CSS',
-    description: '原子化 CSS，快速搭建响应式 UI',
+    title: 'Radix Themes',
+    description: '开箱即用的组件库，样式统一',
     icon: '🎨',
   },
   {
-    title: 'Framer Motion',
+    title: 'Motion',
     description: '炫酷且顺滑的动画体验',
     icon: '🌀',
   },
@@ -43,118 +43,104 @@ const createCommandStr = 'pnpm dlx degit Pony-Unicorn/web3-template my-project'
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <Box p="6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-12 text-center"
       >
-        <h1 className="mb-4 text-4xl font-bold">Bolt 是构建 Dapp 的新起点</h1>
-        <p className="mb-6 text-xl text-gray-600 dark:text-gray-300">
-          快速启动，模块清晰，组件现代，是你构建下一代 Web3 应用的理想起点
-        </p>
-        <div className="flex justify-center">
-          <CopyButton
-            value={createCommandStr}
-            className="group from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 focus:ring-primary/50 dark:focus:ring-primary/30 relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br p-0.5 text-sm font-medium text-white focus:ring-2 focus:outline-none"
-          >
-            <span className="text-sm text-white/90 group-hover:text-white sm:text-base">
-              <span className="hidden sm:inline">{createCommandStr}</span>
-              <span className="sm:hidden">pnpm dlx degit ...</span>
-            </span>
-          </CopyButton>
-        </div>
+        <Flex direction="column" align="center" gap="4" mb="8">
+          <Heading size="8" align="center">
+            Bolt 是构建 Dapp 的新起点
+          </Heading>
+          <Text size="4" color="gray" align="center">
+            快速启动，模块清晰，组件现代，是你构建下一代 Web3 应用的理想起点
+          </Text>
+          <CopyButton value={createCommandStr}>{createCommandStr}</CopyButton>
+        </Flex>
       </motion.div>
 
-      <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="4" mb="8">
         {features.map((feature, index) => (
           <motion.div
             key={feature.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800"
           >
-            <div className="mb-2 text-3xl">{feature.icon}</div>
-            <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              {feature.description}
-            </p>
+            <Card>
+              <Flex direction="column" gap="2">
+                <Text size="6">{feature.icon}</Text>
+                <Heading size="4">{feature.title}</Heading>
+                <Text size="2" color="gray">
+                  {feature.description}
+                </Text>
+              </Flex>
+            </Card>
           </motion.div>
         ))}
-      </div>
+      </Grid>
 
-      <div className="border-primary/10 bg-background/80 mt-20 mb-16 rounded-xl border py-4 shadow-sm">
-        <h2 className="mb-8 text-center text-3xl font-bold tracking-tight">
-          框架信息
-        </h2>
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground text-sm font-medium">
-              版本:
-            </span>
-            <Badge className="mt-1" variant="secondary">
-              {VERSION}
-            </Badge>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground text-sm font-medium">
-              模式:
-            </span>
-            <Badge className="mt-1" variant="outline">
-              {env.VITE_APP_MODE}
-            </Badge>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground text-sm font-medium">
-              使用测试网:
-            </span>
-            <Badge
-              className="mt-1"
-              variant={IS_DEV ? 'destructive' : 'default'}
-            >
-              {IS_DEV.toString().toUpperCase()}
-            </Badge>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground text-sm font-medium">
-              最后更新:
-            </span>
-            <Badge className="mt-1" variant="secondary">
-              2025-12-8
-            </Badge>
-          </div>
-        </div>
-      </div>
+      <Card mb="8">
+        <Flex direction="column" gap="4">
+          <Heading size="5" align="center">
+            框架信息
+          </Heading>
+          <Grid columns="2" gap="4" maxWidth="400px" mx="auto">
+            <Flex gap="2" align="center">
+              <Text size="2" color="gray" weight="medium">
+                版本:
+              </Text>
+              <Badge variant="surface">{VERSION}</Badge>
+            </Flex>
+            <Flex gap="2" align="center">
+              <Text size="2" color="gray" weight="medium">
+                模式:
+              </Text>
+              <Badge variant="outline">{env.VITE_APP_MODE}</Badge>
+            </Flex>
+            <Flex gap="2" align="center">
+              <Text size="2" color="gray" weight="medium">
+                使用测试网:
+              </Text>
+              <Badge
+                variant={IS_DEV ? 'solid' : 'outline'}
+                color={IS_DEV ? 'red' : 'blue'}
+              >
+                {IS_DEV.toString().toUpperCase()}
+              </Badge>
+            </Flex>
+            <Flex gap="2" align="center">
+              <Text size="2" color="gray" weight="medium">
+                最后更新:
+              </Text>
+              <Badge variant="surface">2025-12-8</Badge>
+            </Flex>
+          </Grid>
+        </Flex>
+      </Card>
 
-      {/* Tech Stack */}
-      <div className="mt-16">
-        <h2 className="mb-8 text-center text-3xl font-bold tracking-tight">
+      <Box>
+        <Heading size="5" align="center" mb="4">
           技术栈
-        </h2>
-        <div className="flex flex-wrap justify-center gap-3">
+        </Heading>
+        <Flex wrap="wrap" justify="center" gap="3">
           {[
             'React Router',
             'TypeScript',
-            'Tailwind CSS',
-            'Shadcn UI',
+            'Radix UI Themes',
             'Motion',
             'TanStack Query',
             'AppKit',
             'wagmi',
             'viem',
           ].map((tech) => (
-            <Badge
-              key={tech}
-              variant="outline"
-              className="border-primary/20 text-primary/80 bg-background rounded-xl border-2 px-3 py-1 text-sm font-semibold"
-            >
+            <Badge key={tech} variant="outline" size="2">
               {tech}
             </Badge>
           ))}
-        </div>
-      </div>
-    </div>
+        </Flex>
+      </Box>
+    </Box>
   )
 }

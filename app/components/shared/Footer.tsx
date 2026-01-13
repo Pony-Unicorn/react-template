@@ -1,9 +1,18 @@
+import { Box, Text } from '@radix-ui/themes'
+
 export function Footer() {
   return (
-    <footer className="mt-auto border-t">
-      <div className="text-muted-foreground container mx-auto px-4 py-6 text-center text-sm sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} Bolt. All rights reserved.
-      </div>
-    </footer>
+    <Box
+      asChild
+      mt="auto"
+      py="4"
+      style={{ borderTop: '1px solid var(--gray-a5)' }}
+    >
+      <footer>
+        <Text size="2" color="gray" align="center" as="p">
+          © {new Date().getFullYear()} Bolt. All rights reserved.
+        </Text>
+      </footer>
+    </Box>
   )
 }

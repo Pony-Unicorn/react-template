@@ -1,44 +1,40 @@
-import { Check, Copy } from 'lucide-react'
+import { CheckIcon, CopyIcon } from '@radix-ui/react-icons'
+import { Button, Flex, Text } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 
-import { cn } from '~/lib/utils'
-
-import { Button } from '~/components/ui/button'
-
-interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface CopyButtonProps {
   value: string
+  children?: React.ReactNode
 }
 
 export async function copyToClipboard(value: string) {
   await navigator.clipboard.writeText(value)
 }
 
-export function CopyButton({
-  value,
-  className,
-  children,
-  ...props
-}: CopyButtonProps) {
+export function CopyButton({ value, children }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 3000)
+    if (hasCopied) {
+      const timer = setTimeout(() => {
+        setHasCopied(false)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
   }, [hasCopied])
 
   return (
     <Button
-      className={cn('relative z-10 flex items-center gap-x-2', className)}
+      variant="soft"
       onClick={async () => {
         await copyToClipboard(value)
         setHasCopied(true)
       }}
-      {...props}
     >
-      {children}
-      <span className="sr-only">Copy</span>
-      {hasCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+      <Flex align="center" gap="2">
+        {children && <Text size="2">{children}</Text>}
+        {hasCopied ? <CheckIcon /> : <CopyIcon />}
+      </Flex>
     </Button>
   )
 }

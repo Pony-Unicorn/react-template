@@ -1,14 +1,16 @@
-import { useMemo } from 'react'
-
-import { Button } from '~/components/ui/button'
 import {
+  Badge,
+  Box,
+  Button,
   Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '~/components/ui/card'
-import { Separator } from '~/components/ui/separator'
+  Flex,
+  Grid,
+  Heading,
+  Separator,
+  Text,
+  TextField,
+} from '@radix-ui/themes'
+import { useMemo } from 'react'
 
 import { useShallow } from 'zustand/react/shallow'
 import { useComputedState } from '~/hooks/useComputedState'
@@ -21,20 +23,21 @@ import {
 
 export default function Preview() {
   return (
-    <div className="mx-auto w-full max-w-3xl p-6">
-      <header className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">预览页面</h1>
-        <p className="text-muted-foreground mt-1 text-sm">
+    <Box p="6" maxWidth="800px" mx="auto">
+      <Box mb="6">
+        <Heading size="6" mb="2">
+          预览页面
+        </Heading>
+        <Text size="2" color="gray">
           该页面汇集各类示例组件与用法，后续会持续补充更多示例分节。
-        </p>
-      </header>
+        </Text>
+      </Box>
 
-      <main className="space-y-8">
+      <Flex direction="column" gap="6">
         <UseComputedStateSection />
         <ZustandComputedStateSection />
-        {/* 后续在此继续追加更多 Section 组件 */}
-      </main>
-    </div>
+      </Flex>
+    </Box>
   )
 }
 
@@ -47,77 +50,77 @@ function UseComputedStateSection() {
   const squared = useMemo(() => realValue * realValue, [realValue])
 
   return (
-    <section id="use-computed-state" className="scroll-mt-20">
-      <Card>
-        <CardHeader>
-          <CardTitle>useComputedState（派生状态）</CardTitle>
-          <CardDescription>
-            维护真实值与显示值，支持函数式更新与自定义派生计算。
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div>
-              <p className="text-muted-foreground text-sm">真实值（数字）：</p>
-              <div className="mt-2 flex items-center gap-2">
-                <input
-                  className="border-input bg-background ring-offset-background focus-visible:ring-ring w-40 rounded-md border px-3 py-2 text-sm outline-none focus-visible:ring-2"
-                  type="number"
-                  value={realValue}
-                  onChange={(e) => setRealValue(Number(e.target.value || 0))}
-                  aria-label="真实值"
-                />
-                <Button onClick={() => setRealValue((prev) => prev + 1)}>
-                  +1
-                </Button>
-                <Button
-                  variant="secondary"
-                  onClick={() => setRealValue((prev) => Math.max(0, prev - 1))}
-                >
-                  -1
-                </Button>
-                <Button variant="outline" onClick={() => setRealValue(0)}>
-                  重置
-                </Button>
-              </div>
-            </div>
+    <Card>
+      <Heading size="4" mb="2">
+        useComputedState（派生状态）
+      </Heading>
+      <Text size="2" color="gray" mb="4">
+        维护真实值与显示值，支持函数式更新与自定义派生计算。
+      </Text>
 
-            <Separator />
+      <Flex direction="column" gap="4">
+        <Box>
+          <Text size="2" color="gray" mb="2">
+            真实值（数字）：
+          </Text>
+          <Flex gap="2" align="center" wrap="wrap">
+            <TextField.Root
+              type="number"
+              value={realValue}
+              onChange={(e) => setRealValue(Number(e.target.value || 0))}
+              style={{ width: '140px' }}
+            />
+            <Button onClick={() => setRealValue((prev) => prev + 1)}>+1</Button>
+            <Button
+              variant="soft"
+              onClick={() => setRealValue((prev) => Math.max(0, prev - 1))}
+            >
+              -1
+            </Button>
+            <Button variant="outline" onClick={() => setRealValue(0)}>
+              重置
+            </Button>
+          </Flex>
+        </Box>
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="rounded-md border p-4">
-                <p className="text-muted-foreground text-sm">
-                  派生显示值（格式化为人民币）：
-                </p>
-                <p className="mt-1 text-lg leading-7 font-medium">
-                  {displayValue}
-                </p>
-              </div>
+        <Separator size="4" />
 
-              <div className="rounded-md border p-4">
-                <p className="text-muted-foreground text-sm">
-                  额外派生（平方，仅示例）：
-                </p>
-                <p className="mt-1 text-lg leading-7 font-medium">{squared}</p>
-              </div>
-            </div>
+        <Grid columns={{ initial: '1', md: '2' }} gap="4">
+          <Card variant="surface">
+            <Text size="2" color="gray">
+              派生显示值（格式化为人民币）：
+            </Text>
+            <Text size="5" weight="medium" mt="1">
+              {displayValue}
+            </Text>
+          </Card>
 
-            <Separator />
+          <Card variant="surface">
+            <Text size="2" color="gray">
+              额外派生（平方，仅示例）：
+            </Text>
+            <Text size="5" weight="medium" mt="1">
+              {squared}
+            </Text>
+          </Card>
+        </Grid>
 
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm">快速操作：</p>
-              <div className="flex flex-wrap gap-2">
-                <Button onClick={() => setRealValue(66)}>设为 66</Button>
-                <Button onClick={() => setRealValue(1000)}>设为 1000</Button>
-                <Button onClick={() => setRealValue((prev) => prev * 10)}>
-                  ×10
-                </Button>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </section>
+        <Separator size="4" />
+
+        <Box>
+          <Text size="2" color="gray" mb="2">
+            快速操作：
+          </Text>
+          <Flex gap="2" wrap="wrap">
+            <Button onClick={() => setRealValue(66)}>设为 66</Button>
+            <Button onClick={() => setRealValue(1000)}>设为 1000</Button>
+            <Button onClick={() => setRealValue((prev) => prev * 10)}>
+              ×10
+            </Button>
+          </Flex>
+        </Box>
+      </Flex>
+    </Card>
   )
 }
 
@@ -136,110 +139,116 @@ function ZustandComputedStateSection() {
   const initials = usePersonStore(selectInitials)
 
   return (
-    <section id="zustand-computed-state" className="scroll-mt-20">
-      <Card>
-        <CardHeader>
-          <CardTitle>Zustand 计算状态</CardTitle>
-          <CardDescription>
-            使用 Zustand Store + Selector 实现派生状态，自动优化重渲染。
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="grid gap-3">
-              <div>
-                <label className="text-muted-foreground text-sm">姓氏：</label>
-                <input
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => updateFirstName(e.target.value)}
-                  className="border-input bg-background ring-offset-background focus-visible:ring-ring mt-1 w-full rounded-md border px-3 py-2 text-sm outline-none focus-visible:ring-2"
-                  placeholder="请输入姓氏"
-                />
-              </div>
-              <div>
-                <label className="text-muted-foreground text-sm">名字：</label>
-                <input
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => updateLastName(e.target.value)}
-                  className="border-input bg-background ring-offset-background focus-visible:ring-ring mt-1 w-full rounded-md border px-3 py-2 text-sm outline-none focus-visible:ring-2"
-                  placeholder="请输入名字"
-                />
-              </div>
-              <div>
-                <label className="text-muted-foreground text-sm">年龄：</label>
-                <input
-                  type="number"
-                  value={age}
-                  onChange={(e) => updateAge(Number(e.target.value))}
-                  className="border-input bg-background ring-offset-background focus-visible:ring-ring mt-1 w-full rounded-md border px-3 py-2 text-sm outline-none focus-visible:ring-2"
-                  placeholder="请输入年龄"
-                />
-              </div>
-            </div>
+    <Card>
+      <Heading size="4" mb="2">
+        Zustand 计算状态
+      </Heading>
+      <Text size="2" color="gray" mb="4">
+        使用 Zustand Store + Selector 实现派生状态，自动优化重渲染。
+      </Text>
 
-            <Separator />
+      <Flex direction="column" gap="4">
+        <Grid columns="1" gap="3">
+          <Box>
+            <Text size="2" color="gray" mb="1">
+              姓氏：
+            </Text>
+            <TextField.Root
+              value={firstName}
+              onChange={(e) => updateFirstName(e.target.value)}
+              placeholder="请输入姓氏"
+            />
+          </Box>
+          <Box>
+            <Text size="2" color="gray" mb="1">
+              名字：
+            </Text>
+            <TextField.Root
+              value={lastName}
+              onChange={(e) => updateLastName(e.target.value)}
+              placeholder="请输入名字"
+            />
+          </Box>
+          <Box>
+            <Text size="2" color="gray" mb="1">
+              年龄：
+            </Text>
+            <TextField.Root
+              type="number"
+              value={age}
+              onChange={(e) => updateAge(Number(e.target.value))}
+              placeholder="请输入年龄"
+            />
+          </Box>
+        </Grid>
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              <div className="rounded-md border p-4">
-                <p className="text-muted-foreground text-sm">全名：</p>
-                <p className="mt-1 font-medium">{fullName || '(未填写)'}</p>
-              </div>
-              <div className="rounded-md border p-4">
-                <p className="text-muted-foreground text-sm">首字母：</p>
-                <p className="mt-1 font-medium">{initials || '-'}</p>
-              </div>
-              <div className="rounded-md border p-4">
-                <p className="text-muted-foreground text-sm">状态：</p>
-                <p
-                  className={`mt-1 font-medium ${
-                    isAdult ? 'text-green-600' : 'text-orange-600'
-                  }`}
-                >
-                  {isAdult ? '成年 ✓' : '未成年'}
-                </p>
-              </div>
-            </div>
+        <Separator size="4" />
 
-            <Separator />
+        <Grid columns={{ initial: '1', md: '3' }} gap="4">
+          <Card variant="surface">
+            <Text size="2" color="gray">
+              全名：
+            </Text>
+            <Text size="3" weight="medium" mt="1">
+              {fullName || '(未填写)'}
+            </Text>
+          </Card>
+          <Card variant="surface">
+            <Text size="2" color="gray">
+              首字母：
+            </Text>
+            <Text size="3" weight="medium" mt="1">
+              {initials || '-'}
+            </Text>
+          </Card>
+          <Card variant="surface">
+            <Text size="2" color="gray">
+              状态：
+            </Text>
+            <Badge mt="1" color={isAdult ? 'green' : 'orange'}>
+              {isAdult ? '成年' : '未成年'}
+            </Badge>
+          </Card>
+        </Grid>
 
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm">快速填充示例：</p>
-              <div className="flex flex-wrap gap-2">
-                <Button
-                  onClick={() => {
-                    updateFirstName('张')
-                    updateLastName('三')
-                    updateAge(25)
-                  }}
-                >
-                  张三 (25岁)
-                </Button>
-                <Button
-                  onClick={() => {
-                    updateFirstName('李')
-                    updateLastName('四')
-                    updateAge(16)
-                  }}
-                >
-                  李四 (16岁)
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    updateFirstName('')
-                    updateLastName('')
-                    updateAge(0)
-                  }}
-                >
-                  清空
-                </Button>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </section>
+        <Separator size="4" />
+
+        <Box>
+          <Text size="2" color="gray" mb="2">
+            快速填充示例：
+          </Text>
+          <Flex gap="2" wrap="wrap">
+            <Button
+              onClick={() => {
+                updateFirstName('张')
+                updateLastName('三')
+                updateAge(25)
+              }}
+            >
+              张三 (25岁)
+            </Button>
+            <Button
+              onClick={() => {
+                updateFirstName('李')
+                updateLastName('四')
+                updateAge(16)
+              }}
+            >
+              李四 (16岁)
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                updateFirstName('')
+                updateLastName('')
+                updateAge(0)
+              }}
+            >
+              清空
+            </Button>
+          </Flex>
+        </Box>
+      </Flex>
+    </Card>
   )
 }

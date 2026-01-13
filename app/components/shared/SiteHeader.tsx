@@ -1,110 +1,130 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowTopRightIcon } from '@radix-ui/react-icons'
+import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
 import { Link, NavLink } from 'react-router'
 import logoTransparent from '~/assets/logo-transparent.png'
-import useScroll from '~/hooks/useScroll'
-import { cn } from '~/lib/utils'
 
 export function SiteHeader() {
-  const scrolled = useScroll()
-
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 w-full border-b backdrop-blur transition-all',
-        scrolled && 'bg-background/50'
-      )}
+    <Box
+      asChild
+      position="sticky"
+      top="0"
+      style={{
+        zIndex: 50,
+        borderBottom: '1px solid var(--gray-a5)',
+        backdropFilter: 'blur(8px)',
+        backgroundColor: 'var(--color-panel-translucent)',
+      }}
     >
-      <div className="container mx-auto flex h-16 items-center gap-6 px-4">
-        {/* Logo */}
-        <Link to="/" className="shrink-0">
-          <img src={logoTransparent} width={112} height={112} alt="bolt logo" />
-        </Link>
-
-        {/* Navigation */}
-        <nav className="flex items-center gap-6">
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              cn(
-                'hover:text-foreground/80 text-sm font-medium transition-colors',
-                isActive ? 'text-primary' : 'text-foreground/60'
-              )
-            }
-          >
-            首页
-          </NavLink>
-
-          <NavLink
-            to="/preview"
-            className={({ isActive }) =>
-              cn(
-                'hover:text-foreground/80 text-sm font-medium transition-colors',
-                isActive ? 'text-primary' : 'text-foreground/60'
-              )
-            }
-          >
-            预览
-          </NavLink>
-          <NavLink
-            to="/contract"
-            className={({ isActive }) =>
-              cn(
-                'hover:text-foreground/80 text-sm font-medium transition-colors',
-                isActive ? 'text-primary' : 'text-foreground/60'
-              )
-            }
-          >
-            合约
-          </NavLink>
-
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              cn(
-                'hover:text-foreground/80 text-sm font-medium transition-colors',
-                isActive ? 'text-primary' : 'text-foreground/60'
-              )
-            }
-          >
-            关于
-          </NavLink>
-
-          <a
-            href="https://github.com/Pony-Unicorn/web3-template"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground/60 hover:text-foreground/80 relative text-sm font-medium transition-colors"
-          >
-            Github
-            <ArrowUpRight
-              size={12}
-              className="text-foreground/50 absolute -top-1 -right-4"
-              aria-label="Opens in new window"
+      <header>
+        <Flex
+          align="center"
+          justify="between"
+          gap="6"
+          px="4"
+          py="3"
+          maxWidth="1200px"
+          mx="auto"
+        >
+          {/* Logo */}
+          <Link to="/">
+            <img
+              src={logoTransparent}
+              width={100}
+              height={100}
+              alt="bolt logo"
             />
-          </a>
+          </Link>
 
-          <a
-            href="https://x.com/shunfengge"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground/60 hover:text-foreground/80 relative text-sm font-medium transition-colors"
-          >
-            X
-            <ArrowUpRight
-              size={12}
-              className="text-foreground/50 absolute -top-1 -right-4"
-              aria-label="Opens in new window"
-            />
-          </a>
-        </nav>
+          {/* Navigation */}
+          <Flex asChild align="center" gap="5">
+            <nav>
+              <NavLink to="/" end>
+                {({ isActive }) => (
+                  <RadixLink
+                    size="2"
+                    weight="medium"
+                    color={isActive ? undefined : 'gray'}
+                    highContrast={isActive}
+                  >
+                    首页
+                  </RadixLink>
+                )}
+              </NavLink>
 
-        {/* Right side actions */}
-        <div className="ml-auto flex items-center gap-2">
-          {/* <ThemeToggle /> */}
-          <appkit-button />
-        </div>
-      </div>
-    </header>
+              <NavLink to="/preview">
+                {({ isActive }) => (
+                  <RadixLink
+                    size="2"
+                    weight="medium"
+                    color={isActive ? undefined : 'gray'}
+                    highContrast={isActive}
+                  >
+                    预览
+                  </RadixLink>
+                )}
+              </NavLink>
+
+              <NavLink to="/contract">
+                {({ isActive }) => (
+                  <RadixLink
+                    size="2"
+                    weight="medium"
+                    color={isActive ? undefined : 'gray'}
+                    highContrast={isActive}
+                  >
+                    合约
+                  </RadixLink>
+                )}
+              </NavLink>
+
+              <NavLink to="/about">
+                {({ isActive }) => (
+                  <RadixLink
+                    size="2"
+                    weight="medium"
+                    color={isActive ? undefined : 'gray'}
+                    highContrast={isActive}
+                  >
+                    关于
+                  </RadixLink>
+                )}
+              </NavLink>
+
+              <RadixLink
+                href="https://github.com/Pony-Unicorn/web3-template"
+                target="_blank"
+                size="2"
+                weight="medium"
+                color="gray"
+              >
+                <Flex align="center" gap="1">
+                  Github
+                  <ArrowTopRightIcon width={12} height={12} />
+                </Flex>
+              </RadixLink>
+
+              <RadixLink
+                href="https://x.com/shunfengge"
+                target="_blank"
+                size="2"
+                weight="medium"
+                color="gray"
+              >
+                <Flex align="center" gap="1">
+                  X
+                  <ArrowTopRightIcon width={12} height={12} />
+                </Flex>
+              </RadixLink>
+            </nav>
+          </Flex>
+
+          {/* Right side actions */}
+          <Box>
+            <appkit-button />
+          </Box>
+        </Flex>
+      </header>
+    </Box>
   )
 }

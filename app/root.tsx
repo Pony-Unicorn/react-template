@@ -7,11 +7,13 @@ import {
   ScrollRestoration,
 } from 'react-router'
 
-import { TailwindIndicator } from '~/components/elements/TailwindIndicator'
+import { Container, Flex, Theme } from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css'
+import { ScreenSize } from '~/components/elements/ScreenSize'
 import { Footer } from '~/components/shared/Footer'
 import NotFound from '~/components/shared/NotFound'
 import { SiteHeader } from '~/components/shared/SiteHeader'
-import { Toaster } from '~/components/ui/sonner'
+// import { Toaster } from '~/components/ui/sonner'
 import AppKitProvider from '~/context/AppKitProvider'
 import type { Route } from './+types/root'
 import './app.css'
@@ -50,19 +52,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <AppKitProvider>
-          <div className="flex min-h-screen flex-col">
-            <SiteHeader />
-
-            <main className="relative mx-auto w-full max-w-7xl flex-1 px-4 py-8">
-              {children}
-            </main>
-
-            <Footer />
-          </div>
-        </AppKitProvider>
-        <Toaster />
-        <TailwindIndicator />
+        <Theme
+          accentColor="indigo"
+          grayColor="slate"
+          appearance="dark"
+          radius="medium"
+          scaling="100%"
+          panelBackground="translucent"
+        >
+          <AppKitProvider>
+            {/* <Box></Box> */}
+            <Flex gap="3" minHeight="100vh" direction="column">
+              <SiteHeader />
+              <Container position="relative" align="center" flexShrink="1">
+                {children}
+              </Container>
+              <Footer />
+            </Flex>
+          </AppKitProvider>
+        </Theme>
+        {/* <Toaster /> */}
+        <ScreenSize />
         <ScrollRestoration />
         <Scripts />
       </body>
