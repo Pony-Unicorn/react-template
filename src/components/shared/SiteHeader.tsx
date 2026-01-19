@@ -1,7 +1,7 @@
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
 import { Link, NavLink } from 'react-router'
-import logoTransparent from '~/assets/logo-transparent.png'
+import logoTransparent from '~/assets/logo-transparent-home.png'
 
 export function SiteHeader() {
   return (
@@ -22,18 +22,13 @@ export function SiteHeader() {
           justify="between"
           gap="6"
           px="4"
-          py="3"
+          py="2"
           maxWidth="1200px"
           mx="auto"
         >
           {/* Logo */}
           <Link to="/">
-            <img
-              src={logoTransparent}
-              width={100}
-              height={100}
-              alt="bolt logo"
-            />
+            <img src={logoTransparent} width={80} height={40} alt="bolt logo" />
           </Link>
 
           {/* Navigation */}

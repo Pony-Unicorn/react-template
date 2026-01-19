@@ -227,7 +227,7 @@ export default function About() {
               <Flex gap="3" wrap="wrap" justify="center">
                 <Button asChild variant="soft" size="3">
                   <a
-                    href="https://github.com/Pony-Unicorn"
+                    href="https://github.com/Pony-Unicorn/web3-template"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

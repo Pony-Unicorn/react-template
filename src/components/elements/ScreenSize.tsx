@@ -1,54 +1,33 @@
-import { Badge, Box } from '@radix-ui/themes'
+import { Box } from '@radix-ui/themes'
 
-import { IS_LOCAL } from '~/constants/app'
+const BREAKPOINTS = [
+  { name: 'xl', display: { initial: 'none', xl: 'block' } },
+  { name: 'lg', display: { initial: 'none', lg: 'block', xl: 'none' } },
+  { name: 'md', display: { initial: 'none', md: 'block', lg: 'none' } },
+  { name: 'sm', display: { initial: 'none', sm: 'block', md: 'none' } },
+  { name: 'xs', display: { initial: 'none', xs: 'block', sm: 'none' } },
+  { name: 'initial', display: { initial: 'block', xs: 'none' } },
+] as const
 
 export function ScreenSize() {
-  if (!IS_LOCAL) return null
-
   return (
-    <Box position="fixed" bottom="2" left="2" style={{ zIndex: 50 }}>
-      <Badge size="1" variant="solid" highContrast>
-        <Box
-          display={{
-            initial: 'none',
-            xs: 'none',
-            sm: 'none',
-            md: 'none',
-            lg: 'none',
-            xl: 'block',
-          }}
-        >
-          xl
+    <Box
+      style={{
+        position: 'absolute',
+        left: '4px',
+        bottom: '8px',
+        padding: '4px 8px',
+        fontSize: '12px',
+        color: 'var(--accent-contrast)',
+        pointerEvents: 'none',
+        userSelect: 'none',
+      }}
+    >
+      {BREAKPOINTS.map(({ name, display }) => (
+        <Box key={name} as="span" display={display}>
+          {name}
         </Box>
-        <Box
-          display={{
-            initial: 'none',
-            xs: 'none',
-            sm: 'none',
-            md: 'none',
-            lg: 'block',
-            xl: 'none',
-          }}
-        >
-          lg
-        </Box>
-        <Box
-          display={{
-            initial: 'none',
-            xs: 'none',
-            sm: 'none',
-            md: 'block',
-            lg: 'none',
-          }}
-        >
-          md
-        </Box>
-        <Box display={{ initial: 'none', xs: 'none', sm: 'block', md: 'none' }}>
-          sm
-        </Box>
-        <Box display={{ initial: 'none', xs: 'block', sm: 'none' }}>xs</Box>
-        <Box display={{ initial: 'block', xs: 'none' }}>initial</Box>
-      </Badge>
+      ))}
     </Box>
   )
 }
