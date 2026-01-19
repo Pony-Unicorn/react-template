@@ -1,19 +1,21 @@
 # Bolt
 
-> A fast, modular Web3 starter built with **React Router**, **shadcn/ui**, **Tailwind CSS**, **Motion**, and the latest in wallet tooling: **Wagmi**, **viem**, and **@reown/appkit**.
+> A fast, modular Web3 starter built with **React Router**, **Radix UI Themes**, **Motion**, and the latest in wallet tooling: **Wagmi**, **viem**, and **@reown/appkit**.
 
-Bolt 基于 React Router、shadcn/ui、Tailwind CSS、Motion 以及最新钱包工具（Wagmi、viem和@reown/appkit）构建的前端模版。
+Bolt 基于 React Router、Radix UI Themes、Motion 以及最新钱包工具（Wagmi、viem 和 @reown/appkit）构建的前端模版。
 
 ---
 
 ## ⚡️ 特性 Features
 
-- 🧱 **React Router + shadcn/ui** — 强大且现代的全栈 UI 架构
-- 🎨 **Tailwind CSS** — 原子化 CSS，快速搭建响应式 UI
-- 🌀 **Framer Motion** — 炫酷且顺滑的动画体验
+- 🧱 **React Router 7** — 现代化的客户端路由解决方案
+- 🎨 **Radix UI Themes** — 强大的设计系统与开箱即用的主题化组件
+- 🌀 **Motion** — 炫酷且顺滑的动画体验（Framer Motion 的轻量级替代）
 - 🔐 **Wagmi + viem** — 下一代 EVM 钱包交互工具
-- 🚀 **@reown/appkit** — 一站式 DApp 构建集成方案
+- 🚀 **@reown/appkit** — 一站式 DApp 钱包连接集成方案
 - 🧹 **Prettier** — 代码风格统一
+- 📦 **TanStack Query** — 强大的服务端状态管理
+- 🛡️ **TypeScript + Zod** — 类型安全与运行时校验
 - ⚙️ **约定式目录结构** — 支持合约 ABI、env 环境变量、类型声明等规范组织
 - ⏱ **开箱即用** — 快速启动，支持拓展与定制
 - [编码规范](https://www.yuque.com/pony13500815917/computer/1556e1e356e8b8d24ea1540304921f61)
@@ -94,15 +96,13 @@ pnpm run deploy
 
 ## 🧱 Core Dependencies
 
-- [react](https://react.dev/) - The library for web and native user interfaces
-- [react router](https://reactrouter.com/start/framework/routing) - React Router
-- [TailwindCSS](https://tailwindcss.com) – Utility-first CSS framework for rapid UI development
-- [Radix](https://www.radix-ui.com/) – Primitives like modal, popover, etc. to build a stellar user experience
-- [shadcn/ui](https://ui.shadcn.com) - components are included in the `/components/ui` folder
-- [lucide](https://lucide.dev/) – Beautiful & consistent icons Made by the community.
-- [Motion](https://www.framer.com/motion/) – A modern animation library
-- [Font animation reference](https://variantvault.chrisabdo.dev/text-variants)
-- [Simple Icons](https://simpleicons.org/) - popular brands svg
+- [React 19](https://react.dev/) - The library for web and native user interfaces
+- [React Router 7](https://reactrouter.com/) - 声明式路由库，支持嵌套路由与数据加载
+- [Radix UI Themes](https://www.radix-ui.com/themes) - 完整的设计系统，提供开箱即用的主题化组件
+- [Radix UI Icons](https://www.radix-ui.com/icons) - 精心设计的图标库
+- [Motion](https://motion.dev/) - 现代化动画库（Framer Motion 的继任者）
+- [Font animation reference](https://variantvault.chrisabdo.dev/text-variants) - 字体动画参考
+- [Simple Icons](https://simpleicons.org/) - 流行品牌 SVG 图标
 
 ## 🛠️ Tooling
 
@@ -120,23 +120,22 @@ pnpm run deploy
 ## Third-Party Libraries
 
 - [ky](https://github.com/sindresorhus/ky) - Tiny & elegant JavaScript HTTP client based on the Fetch API
-- [TanStack Query](https://tanstack.com/query/v5/docs/framework/react/quick-start) - React Hooks library for data requests
-- [dayjs](https://day.js.org/zh-CN/) - Lightweight processing time and date library
-- [react-hook-form](https://react-hook-form.com/) - Form validation library
-- [zod](https://zod.dev/) - TypeScript-first schema validation with static type inference
-- [zustand](https://zustand-demo.pmnd.rs/) A small, fast, and scalable bearbones state management solution.
+- [TanStack Query](https://tanstack.com/query/latest/docs/framework/react/overview) - 强大的异步状态管理，用于数据获取、缓存与同步
+- [dayjs](https://day.js.org/zh-CN/) - 轻量级时间日期处理库
+- [Zod](https://zod.dev/) - TypeScript-first 模式验证与静态类型推断
+- [Zustand](https://zustand-demo.pmnd.rs/) - 小巧、快速、可扩展的状态管理方案
+- [Sonner](https://sonner.emilkowal.ski/) - 优雅的 Toast 通知组件
+- [neverthrow](https://github.com/supermacro/neverthrow) - 类型安全的错误处理（Result 模式）
 
-## 🌐 Domain-specific
+## 🌐 Web3 Domain-specific
 
-- [Wagmi](https://wagmi.sh/) - Wagmi Reactivity for Ethereum apps
-- [viem](https://viem.sh/) - Ethereum library
-- [@reown/appkit](https://docs.reown.com/appkit/next/core/installation) - Wallet connection manager
+- [Wagmi](https://wagmi.sh/) - React Hooks for Ethereum，类型安全的 EVM 交互
+- [viem](https://viem.sh/) - 轻量、模块化的 TypeScript Ethereum 库
+- [@reown/appkit](https://docs.reown.com/appkit/react/core/installation) - 开箱即用的钱包连接 UI 与管理（原 WalletConnect）
 
 ## 🤖 AI Development
 
-- [rules](https://cursor.directory/rules) - 规则参考
-- [cursor](https://www.cursor.com/cn) - AI Code Editor
-  - `.cursor/rules`: [Rules](https://docs.cursor.com/context/rules#domain-specific-guidance) for Cursor AI-assisted development
+- [OpenCode](https://opencode.ai/) - 建议使用 opencode
 
 ## 🛰️ Deployment
 
@@ -146,80 +145,205 @@ pnpm run deploy
   - Download your Pages project config `npx wrangler pages download config <PROJECT_NAME>`
 - Static Hosting, When deploying to static hosting, you can deploy React Router the same as any other single page application with React.
 
-## Shadcn/ui Theme Tooling
+## 🎨 Radix UI Themes Customization
 
-- [tweakcn](https://tweakcn.com/) - 近乎完美的主题生成器，自定义颜色、字体和布局，以及 AI 生成并实时预览
-- [tinte](https://www.tinte.dev/shadcn) - 自带 4000+ 主题同时支持 AI 生成
-- [rlabs generate](https://shadcn.rlabs.art/generate) - 功能单一的主题生成器，默认也有很多主题可选
-- [10000+ Themes](https://ui.jln.dev/) - 10000+ 的主题
+项目使用 **Radix UI Themes** 作为设计系统，支持强大的主题定制能力：
+
+- **主题配置位置**：`src/Root.tsx`
+- **可配置项**：
+  - `accentColor` - 主题色（blue, green, red 等）
+  - `grayColor` - 灰度色板（slate, sand, gray 等）
+  - `appearance` - 明暗模式（light / dark）
+  - `radius` - 圆角风格（none, small, medium, large, full）
+  - `scaling` - UI 缩放比例（90% ~ 110%）
+  - `panelBackground` - 面板背景（solid / translucent）
+
+参考文档：[Radix UI Themes - Theme](https://www.radix-ui.com/themes/docs/theme/overview)
+
+---
+
+## 🏗️ 项目架构 Architecture
+
+### 技术栈概览
+
+```
+┌─────────────────────────────────────────────────────┐
+│                  User Interface                      │
+│              React 19 + React Router 7               │
+└─────────────────────────────────────────────────────┘
+                          │
+┌─────────────────────────────────────────────────────┐
+│                  UI Components                       │
+│        Radix UI Themes (Design System)               │
+│        Motion (Animations)                           │
+└─────────────────────────────────────────────────────┘
+                          │
+┌─────────────────────────────────────────────────────┐
+│              State Management Layer                  │
+│   Zustand (Client)  │  TanStack Query (Server)      │
+└─────────────────────────────────────────────────────┘
+                          │
+┌─────────────────────────────────────────────────────┐
+│                 Web3 Integration                     │
+│   Wagmi + viem  │  @reown/appkit (Wallet Connect)   │
+└─────────────────────────────────────────────────────┘
+                          │
+┌─────────────────────────────────────────────────────┐
+│            Blockchain & Backend APIs                 │
+│       Ethereum RPC  │  RESTful/GraphQL APIs          │
+└─────────────────────────────────────────────────────┘
+```
+
+### 核心流程
+
+**1. 应用启动流程**
+
+```
+main.tsx → App.tsx → Root.tsx (Theme + Providers) → Routes
+```
+
+**2. 钱包连接流程**
+
+```
+用户点击连接钱包按钮
+  ↓
+@reown/appkit 弹出钱包选择
+  ↓
+用户选择钱包并授权
+  ↓
+Wagmi 管理连接状态
+  ↓
+应用获取 address、chainId 等信息
+```
+
+**3. 数据获取流程**
+
+```
+组件挂载
+  ↓
+TanStack Query useQuery 触发
+  ↓
+ky 发起 HTTP 请求 / viem 调用合约
+  ↓
+数据缓存 & 自动刷新
+  ↓
+组件渲染展示
+```
+
+---
 
 ## 📁 Project directory structure
 
 ```
-app/
-├── app.css # 全局样式文件，只允许有这一个 css 文件
+src/
+├── app.css                    # 全局样式文件（导入 Radix UI Themes 样式）
+├── main.tsx                   # 应用入口，渲染 <App />
+├── App.tsx                    # 路由配置（BrowserRouter + Routes）
+├── Root.tsx                   # 根布局组件（Theme + Provider + Layout）
 
-├── features/ # 业务模块。例如首页、登录、用户中心等，小型项目分散到 routes hooks 等中
-│ └── dashboard/
-│ ├── index.tsx # 页面
-│ ├── ChartPanel.tsx # 专属组件
-│ ├── StatsCard.tsx # 专属组件
-│ ├── useProfile.ts # 专属 hook
-│ ├── api.ts        # 专属接口
-│ └── types.ts # 专属类型定义
+├── routes/                    # 页面路由组件
+│   ├── Home.tsx              # 首页
+│   ├── About.tsx             # 关于页
+│   ├── Contract.tsx          # 合约交互示例页
+│   └── Preview.tsx           # 组件预览页
 
-├── components/ # 通用组件
-│ ├── ui/ # shadcn/ui 自动生成的 UI 组件
-│ ├── react-bits/ # react-bits 自动生成的 UI 组件
-│ ├── shared/ # 多页面复用组件（如 Header、Footer）
-│ └── elements/ # 小型功能组件（如 Modal、Toast、Loading）
+├── features/                  # 业务模块（复杂功能的聚合）
+│   └── demo/                 # 示例：某个大型功能模块
+│       ├── Home.tsx          # 模块首页
+│       ├── components/       # 模块专属组件
+│       ├── hooks/            # 模块专属 hooks
+│       ├── api.ts            # 模块专属接口
+│       └── types.ts          # 模块专属类型
 
-├── constants/ # 所有配置文件和常量
-│ ├── api.ts # 接口地址配置
-│ ├── MyToken.abi.json/ts # 合约 ABI 文件
-│ ├── app.ts # 应用配置（如主题、模式）
-│ ├── env.ts # 环境变量
-│ └── uiLabels.ts # 按钮/标题等文案常量
+├── components/                # 通用组件
+│   ├── shared/               # 全局共享组件（Header、Footer、NotFound 等）
+│   │   ├── SiteHeader.tsx
+│   │   ├── Footer.tsx
+│   │   └── NotFound.tsx
+│   ├── elements/             # 小型功能组件（按钮、图标、工具组件等）
+│   │   ├── CopyButton.tsx
+│   │   └── ScreenSize.tsx
+│   └── react-bits/           # 动画组件或第三方组件扩展
+│       └── FuzzyText.tsx
 
-├── context/ # 所有 Context/Provider 相关的逻辑
-│ └── AppKitProvider.tsx # AppKit evm wallet
+├── context/                   # React Context Providers
+│   └── AppKitProvider.tsx    # Wagmi + TanStack Query + AppKit 配置
 
-├── hooks/ # 自定义 Hook
-│ ├── useComputedState.ts # 维护「真实值」与「派生显示值」
-│ └── useDebounce.ts
+├── constants/                 # 配置文件与常量
+│   ├── env.ts                # 环境变量（使用 @t3-oss/env-core + Zod 校验）
+│   ├── app.ts                # 应用配置（模式判断、主题等）
+│   ├── api.ts                # API 地址配置
+│   └── USDT.abi.ts           # 合约 ABI（如 ERC20 合约）
 
-├── services/ # 按领域聚合接口（auth、user、order、dashboard…）和少量业务处理
-│ ├── auth.ts # 登录相关接口 & 业务操作
-│ └── user.ts # 用户相关接口操作
+├── hooks/                     # 自定义 React Hooks
+│   ├── useComputedState.ts   # 维护原始值与 UI 展示值
+│   └── useScroll.ts          # 滚动相关 hook
 
-├── lib/ # 第三方库的封装（如 ky、shadcn/ui 工具函数的封装）属于“外部库的适配器”
-│ ├── ky.ts # ky 实例，对 ky 的二次封装
-│ └── utils.ts # shadcn/ui 的 `cn` 函数自动生成
+├── store/                     # Zustand 全局状态管理
+│   └── person.ts             # 示例：用户/个人信息 store
 
-├── types/ # 类型声明与接口定义
-│ ├── user.d.ts # 全局声明类型
-│ └── api.d.ts # 接口响应结构，api 接口声明在这里
+├── services/                  # API 接口与业务逻辑封装
+│   └── auth.ts               # 认证相关接口
 
-├── utils/ # 通用工具函数，例如格式化地址、校验邮箱等，属于“业务无关的自定义纯工具”
-│ ├── common.ts # 通用工具函数
-│ ├── format.ts # 日期/金额、钱包地址等所有格式化工具类
-│ └── validate.ts # 所有验证工具类
+├── types/                     # TypeScript 类型定义
+│   └── api.d.ts              # API 响应类型声明
 
-docs/
-├── api.md # api 文档
-├── overview.md # 项目概述
-├── architecture.md # 项目架构
+└── utils/                     # 纯工具函数（无副作用）
+    ├── common.ts             # 通用工具
+    ├── format.ts             # 格式化工具（地址、时间、金额等）
+    ├── validate.ts           # 校验工具
+    └── result.ts             # Result 模式封装（neverthrow）
 
-llms/ # llms 文档目录
-├── shadcn-ui-llms.txt # shadcn/ui 例 curl -L https://ui.shadcn.com/llms.txt -o shadcn-ui-llms.txt
+public/                        # 静态资源
+├── fonts/                    # 字体文件
+└── images/                   # 图片资源
+
+docs/                          # 项目文档
+├── overview.md               # 项目概述
+└── architecture.md           # 架构说明
+
+llms/                          # AI 辅助开发文档
+└── [library]-llms.txt        # 各类库的 AI 提示词文档 curl -L https://xxx.com/llms.txt -o xxx-llms.txt
 ```
+
+### 目录职责说明
+
+| 目录                     | 职责                                      |
+| ------------------------ | ----------------------------------------- |
+| `routes/`                | 页面级组件，与路由一一对应                |
+| `features/`              | 大型业务模块，聚合相关组件、hooks、API    |
+| `components/shared/`     | 跨页面复用的全局组件（Layout、Header 等） |
+| `components/elements/`   | 小型、通用的 UI 组件                      |
+| `components/react-bits/` | 动画组件或第三方扩展组件                  |
+| `context/`               | React Context 与 Providers                |
+| `hooks/`                 | 可复用的自定义 Hooks                      |
+| `store/`                 | Zustand 状态管理                          |
+| `services/`              | API 调用与业务逻辑封装                    |
+| `utils/`                 | 纯函数工具（格式化、校验等）              |
+| `constants/`             | 常量、配置、环境变量                      |
+| `types/`                 | TypeScript 类型声明                       |
 
 ## 常用命令
 
-- 使用 shadcn 命令行安装其他组件，自定义安装路径 `-p app/components/react-bits`
-- 查看当前有哪些包已过时 `pnpm outdated`
-- 升级到 semver 范围内的最新版本 `pnpm up`
-- 将依赖升级到最新版本 `pnpm up -L axios`
+### 开发命令
+
+```bash
+pnpm dev          # 启动开发服务器
+pnpm build        # 构建生产版本（TypeScript 类型检查 + Vite 构建）
+pnpm preview      # 本地预览生产构建
+pnpm format       # 检查代码格式
+pnpm format-fix   # 自动修复代码格式
+pnpm deploy       # 部署到 Cloudflare Pages
+```
+
+### 依赖管理
+
+```bash
+pnpm outdated       # 查看过时的依赖
+pnpm up             # 升级到 semver 范围内的最新版本
+pnpm up -L [pkg]    # 将指定依赖升级到最新版本（忽略 semver）
+pnpm up -L --interactive  # 交互式选择升级依赖
+```
 
 ## ✅ Todo List
 
