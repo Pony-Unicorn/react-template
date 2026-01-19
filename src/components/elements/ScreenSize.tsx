@@ -1,4 +1,4 @@
-import { Box } from '@radix-ui/themes'
+import { Badge, Box } from '@radix-ui/themes'
 
 const BREAKPOINTS = [
   { name: 'xl', display: { initial: 'none', xl: 'block' } },
@@ -11,21 +11,12 @@ const BREAKPOINTS = [
 
 export function ScreenSize() {
   return (
-    <Box
-      style={{
-        position: 'absolute',
-        left: '4px',
-        bottom: '8px',
-        padding: '4px 8px',
-        fontSize: '12px',
-        color: 'var(--accent-contrast)',
-        pointerEvents: 'none',
-        userSelect: 'none',
-      }}
-    >
+    <Box position="absolute" left="1" bottom="2">
       {BREAKPOINTS.map(({ name, display }) => (
-        <Box key={name} as="span" display={display}>
-          {name}
+        <Box key={name} display={display}>
+          <Badge variant="soft" color="gray" size="1" highContrast>
+            {name}
+          </Badge>
         </Box>
       ))}
     </Box>

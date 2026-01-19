@@ -11,7 +11,7 @@ import AppKitProvider from '~/context/AppKitProvider'
 export default function Root() {
   return (
     <Theme
-      accentColor="indigo"
+      accentColor="blue"
       grayColor="slate"
       appearance="dark"
       radius="medium"
