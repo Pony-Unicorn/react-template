@@ -23,6 +23,7 @@
 # production
 /build
 /dist
+*.tsbuildinfo
 
 # debug
 npm-debug.log*
