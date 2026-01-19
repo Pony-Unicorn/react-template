@@ -1,4 +1,4 @@
-import Demo from '~/features/demo/Home'
+import Demo from '../features/demo/Home'
 
 export default function Home() {
   return <Demo />

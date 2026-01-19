@@ -42,12 +42,13 @@ export function SiteHeader() {
               <NavLink to="/" end>
                 {({ isActive }) => (
                   <RadixLink
+                    asChild
                     size="2"
                     weight="medium"
                     color={isActive ? undefined : 'gray'}
                     highContrast={isActive}
                   >
-                    首页
+                    <span>首页</span>
                   </RadixLink>
                 )}
               </NavLink>
@@ -55,12 +56,13 @@ export function SiteHeader() {
               <NavLink to="/preview">
                 {({ isActive }) => (
                   <RadixLink
+                    asChild
                     size="2"
                     weight="medium"
                     color={isActive ? undefined : 'gray'}
                     highContrast={isActive}
                   >
-                    预览
+                    <span>预览</span>
                   </RadixLink>
                 )}
               </NavLink>
@@ -68,12 +70,13 @@ export function SiteHeader() {
               <NavLink to="/contract">
                 {({ isActive }) => (
                   <RadixLink
+                    asChild
                     size="2"
                     weight="medium"
                     color={isActive ? undefined : 'gray'}
                     highContrast={isActive}
                   >
-                    合约
+                    <span>合约</span>
                   </RadixLink>
                 )}
               </NavLink>
@@ -81,12 +84,13 @@ export function SiteHeader() {
               <NavLink to="/about">
                 {({ isActive }) => (
                   <RadixLink
+                    asChild
                     size="2"
                     weight="medium"
                     color={isActive ? undefined : 'gray'}
                     highContrast={isActive}
                   >
-                    关于
+                    <span>关于</span>
                   </RadixLink>
                 )}
               </NavLink>
