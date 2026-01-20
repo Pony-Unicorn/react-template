@@ -149,7 +149,7 @@ pnpm run deploy
 
 项目使用 **Radix UI Themes** 作为设计系统，支持强大的主题定制能力：
 
-- **主题配置位置**：`src/Root.tsx`
+- **主题配置位置**：`src/App.tsx`
 - **可配置项**：
   - `accentColor` - 主题色（blue, green, red 等）
   - `grayColor` - 灰度色板（slate, sand, gray 等）
@@ -199,7 +199,7 @@ pnpm run deploy
 **1. 应用启动流程**
 
 ```
-main.tsx → App.tsx → Root.tsx (Theme + Providers) → Routes
+main.tsx → App.tsx (Theme + AppKitProvider + BrowserRouter) → Root.tsx (Layout) → Route Pages
 ```
 
 **2. 钱包连接流程**
@@ -236,10 +236,10 @@ ky 发起 HTTP 请求 / viem 调用合约
 
 ```
 src/
-├── app.css                    # 全局样式文件（导入 Radix UI Themes 样式）
-├── main.tsx                   # 应用入口，渲染 <App />
-├── App.tsx                    # 路由配置（BrowserRouter + Routes）
-├── Root.tsx                   # 根布局组件（Theme + Provider + Layout）
+├── app.css                    # 全局样式文件
+├── main.tsx                   # 应用入口，渲染根组件
+├── App.tsx                    # 根组件，配置 Theme + AppKitProvider + BrowserRouter + Routes
+├── Root.tsx                   # 布局组件（SiteHeader + Outlet + Footer）
 
 ├── routes/                    # 页面路由组件
 │   ├── Home.tsx              # 首页
@@ -256,11 +256,11 @@ src/
 │       └── types.ts          # 模块专属类型
 
 ├── components/                # 通用组件
-│   ├── shared/               # 全局共享组件（Header、Footer、NotFound 等）
+│   ├── shared/               # 全局共享组件与业务逻辑相关（Header、NotFound 等），具有一定的复杂度
 │   │   ├── SiteHeader.tsx
 │   │   ├── Footer.tsx
 │   │   └── NotFound.tsx
-│   ├── elements/             # 小型功能组件（按钮、图标、工具组件等）
+│   ├── elements/             # 原子级、功能型小组件（按钮、图标、工具组件等），轻量、独立、可组合、无业务依赖
 │   │   ├── CopyButton.tsx
 │   │   └── ScreenSize.tsx
 │   └── react-bits/           # 动画组件或第三方组件扩展
