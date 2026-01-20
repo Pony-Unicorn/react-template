@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import '~/app.css'
 import { ScreenSize } from '~/components/elements/ScreenSize'
 import NotFound from '~/components/shared/NotFound'
+import WrapToaster from '~/components/shared/WrapToaster'
 import { IS_LOCAL } from '~/constants/app'
 import AppKitProvider from '~/context/AppKitProvider'
 import Root from '~/Root'
@@ -42,6 +43,7 @@ export default function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        <WrapToaster />
         {/* debug info Container*/}
         {IS_LOCAL && (
           <Box

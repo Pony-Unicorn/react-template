@@ -11,6 +11,7 @@ import {
   TextField,
 } from '@radix-ui/themes'
 import { useMemo } from 'react'
+import { toast } from 'sonner'
 
 import { useShallow } from 'zustand/react/shallow'
 import { useComputedState } from '~/hooks/useComputedState'
@@ -36,6 +37,44 @@ export default function Preview() {
       <Flex direction="column" gap="8">
         <UseComputedStateSection />
         <ZustandComputedStateSection />
+        <Flex direction="column" gap="1">
+          <Flex gap="1">
+            <Button
+              variant="classic"
+              onClick={() => {
+                toast('This is a toast')
+              }}
+            >
+              toast
+            </Button>
+            <Button
+              variant="soft"
+              color="green"
+              onClick={() => {
+                toast.success('This is a success toast')
+              }}
+            >
+              success
+            </Button>
+            <Button
+              color="red"
+              onClick={() => {
+                toast.error('This is a error')
+              }}
+            >
+              error
+            </Button>
+            <Button
+              variant="outline"
+              color="blue"
+              onClick={() => {
+                toast.loading('Loading…')
+              }}
+            >
+              loading
+            </Button>
+          </Flex>
+        </Flex>
       </Flex>
     </Box>
   )
