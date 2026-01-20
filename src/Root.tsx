@@ -1,6 +1,7 @@
 import { Box, Container, Flex, Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import { Outlet } from 'react-router'
+import { Toaster } from 'sonner'
 import '~/app.css'
 import { ScreenSize } from '~/components/elements/ScreenSize'
 import { Footer } from '~/components/shared/Footer'
@@ -27,6 +28,7 @@ export default function Root() {
           <Footer />
         </Flex>
       </AppKitProvider>
+       <Toaster className=''/>
       {/* debug info Container*/}
       {IS_LOCAL && (
         <Box
