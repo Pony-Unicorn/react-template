@@ -1,6 +1,6 @@
 {
   "name": "web3-template",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "license": "MIT",
   "description": "dApp template built using React, @reown/appkit and more! ",
