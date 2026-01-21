@@ -1,28 +1,15 @@
-import {
-  CheckCircledIcon,
-  CrossCircledIcon,
-  ExclamationTriangleIcon,
-  InfoCircledIcon,
-} from '@radix-ui/react-icons'
-
 import { Toaster } from 'sonner'
 
+// Style see css https://github.com/emilkowalski/sonner/blob/main/src/styles.css
 export default function WrapToaster() {
   return (
     <Toaster
-      icons={{
-        success: <CheckCircledIcon />,
-        info: <InfoCircledIcon />,
-        warning: <ExclamationTriangleIcon />,
-        error: <CrossCircledIcon />,
-      }}
+      theme="light" // dark
+      position="top-center"
+      richColors
       style={
         {
-          // '--normal-bg': 'var(--accent-surface)',
-          // '--normal-border': 'var(--gray-a6)',
-          // '--normal-text': 'var(--gray-12)',
-          // '--normal-border': 'var(--border)',
-          '--border-radius': 'var(--radius-2)',
+          '--border-radius': '8px',
         } as React.CSSProperties
       }
     />

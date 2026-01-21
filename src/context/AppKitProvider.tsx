@@ -37,8 +37,10 @@ const metadata = {
 export const modal = createAppKit({
   adapters: [wagmiAdapter],
   themeMode: 'light' as const,
+  // see https://docs.reown.com/appkit/react/core/theming
   // themeVariables: {
-  //   '--w3m-accent': '#000000',
+  //   '--apkt-color-mix': '#00BB7F',
+  //   '--apkt-color-mix-strength': 40,
   // },
   projectId,
   networks,

@@ -48,8 +48,15 @@ export default function Preview() {
               toast
             </Button>
             <Button
+              // variant="classic"
+              onClick={() => {
+                toast.warning('This is a toast')
+              }}
+            >
+              warning
+            </Button>
+            <Button
               variant="soft"
-              color="green"
               onClick={() => {
                 toast.success('This is a success toast')
               }}
@@ -66,7 +73,6 @@ export default function Preview() {
             </Button>
             <Button
               variant="outline"
-              color="blue"
               onClick={() => {
                 toast.loading('Loading…')
               }}
