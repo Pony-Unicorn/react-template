@@ -352,20 +352,29 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 ## ✅ Todo List
 
 - [ ] 善于使用 emoji 表情
-- [ ] 部署 cf 命令
-- [ ] 修复控制台错误
-- [ ] 增加对应的 mcp 服务
-- [ ] ky，对幂等请求加自动重试（useQuery好像带自动重试），结合后端库，TypeScript：给返回值一个“强类型出口”
 - [ ] 优化 tanstack query，添加 @lukemorales/query-key-factory 的支持和例子
   - 读操作不要使用 toast 提示（可使用静态组件显示错误），刷新读取可使用 toast
   - 写操作手动触发，可使用 toast 提示，参考 https://tanstack.com/query/latest/docs/framework/react/quick-start
   - 需要手动点击刷新，需要 enabled: false 设置
-  - useQuery、useQueries、useMutation 常用 hooks 给出示例
+  - useQuery、useQueries、useMutation 常用 hooks 给出示例，服务器等接口示例，接口类型不应该手写，应该使用zod 验证模式生成
+- 完善 AI 辅助开发
+  - Claude.md 文档
+  - 需求文档的具体结构、示例
+  - 适合当前架构的 Plugin，把 Skill + Slash Commands + Agents + MCP 一个 zip 压缩包就够了，简单快速
+- skill
+  - git-commit-helper
+  - 最佳实践和三方库的知识
+- Slash Commands
+  - commit-helper
+- AGENTS.md 文件
+  - 项目规范是否能代替 skill
+  - agents 文档 https://github.com/agentsmd/agents.md
+  - https://learnopencode.com/3-workflow/03-init.html
+- Callout 组件提示，封装：正常、警告、成功、失败、信息
 - [ ] react 自定义组件、hooks
   - useComputedState
   - react 问题，根据是否链接推断出 address 和 chainid 是否拥有
   - 添加专门钱包没有链接的处理UI显示
 - [ ] UI
   - 优化 UI 和一些描述文字
-- [ ] 字体: 字体下载到本地使用避免开发中获取不到谷歌字体问题
 - [ ] 安全性，token 基于 only Cookie
