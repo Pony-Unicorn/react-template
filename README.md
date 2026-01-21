@@ -127,6 +127,10 @@ pnpm run deploy
 - [Sonner](https://sonner.emilkowal.ski/) - 优雅的 Toast 通知组件
 - [neverthrow](https://github.com/supermacro/neverthrow) - 类型安全的错误处理（Result 模式）
 
+## 📚 Useful Resources
+
+- [Fontsource](https://fontsource.org) - 自托管开源字体库，支持 npm 安装，提供可变字体与子集优化
+
 ## 🌐 Web3 Domain-specific
 
 - [Wagmi](https://wagmi.sh/) - React Hooks for Ethereum，类型安全的 EVM 交互
