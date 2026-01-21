@@ -1,5 +1,6 @@
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
+import { AppKitButton } from '@reown/appkit/react'
 import { Link, NavLink } from 'react-router'
 import logoTransparent from '~/assets/logo-transparent-home.png'
 
@@ -120,7 +121,7 @@ export function SiteHeader() {
 
           {/* Right side actions */}
           <Box>
-            <appkit-button />
+            <AppKitButton />
           </Box>
         </Flex>
       </header>

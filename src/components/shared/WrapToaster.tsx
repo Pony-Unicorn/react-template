@@ -7,11 +7,11 @@ export default function WrapToaster() {
       theme="light" // dark
       position="top-center"
       richColors
-      style={
-        {
-          '--border-radius': '8px',
-        } as React.CSSProperties
-      }
+      toastOptions={{
+        style: {
+          borderRadius: '8px',
+        },
+      }}
     />
   )
 }
