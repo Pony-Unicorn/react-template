@@ -151,11 +151,12 @@ export default function About() {
                 </Flex>
                 <Flex direction="column" gap="2">
                   {[
-                    'React & Next.js',
                     'TypeScript',
-                    'Solidity',
-                    'Web3.js / Ethers.js',
+                    'Go',
                     'Node.js',
+                    'Solidity',
+                    'React & Next.js',
+                    'Web3.js / Viem.js',
                     'PostgreSQL / MongoDB',
                   ].map((skill) => (
                     <Flex key={skill} gap="2" align="center">
@@ -183,11 +184,12 @@ export default function About() {
                 <Flex direction="column" gap="2">
                   {[
                     'GameFi 开发',
-                    'DeFi 协议设计',
-                    '智能合约审计',
-                    '区块链架构',
-                    '量化交易',
+                    'DeFi 开发',
                     '去中心化应用',
+                    '量化交易',
+                    '智能合约与协议设计',
+                    '高性能区块链系统架构',
+                    '金融算法与机制设计',
                   ].map((area) => (
                     <Flex key={area} gap="2" align="center">
                       <Box

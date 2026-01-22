@@ -370,9 +370,6 @@ pnpm up -L --interactive  # 交互式选择升级依赖
   - 支持类型：info / success / warning / error / default
   - 基于 Radix UI Callout 实现统一样式
 
-- [ ] **UI 细节优化**
-  - [ ] 优化各页面的描述文案，要求文案描述要和项目框架保持一致
-  - [ ] 统一 emoji 使用规范
 - [ ] **集成 vanilla-extract**
   - https://vanilla-extract.style
 
