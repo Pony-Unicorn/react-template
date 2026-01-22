@@ -125,9 +125,15 @@ export default function Page() {
       <Box p="6" maxWidth="800px" mx="auto">
         <Card>
           <Heading size="4" mb="2">
-            USDT 合约交互
+            合约交互示例
           </Heading>
-          <Text color="gray">请先连接钱包</Text>
+          <Text size="2" color="gray">
+            基于 Wagmi + viem 实现类型安全的 EVM 合约交互，展示 USDT
+            代币的读取与转账功能
+          </Text>
+          <Text color="orange" mt="3">
+            请先连接钱包
+          </Text>
         </Card>
       </Box>
     )
@@ -138,9 +144,15 @@ export default function Page() {
       <Box p="6" maxWidth="800px" mx="auto">
         <Card>
           <Heading size="4" mb="2">
-            USDT 合约交互
+            合约交互示例
           </Heading>
-          <Text color="gray">当前链不支持，请切换到主网或 Sepolia 测试网</Text>
+          <Text size="2" color="gray" mb="3">
+            基于 Wagmi + viem 实现类型安全的 EVM 合约交互，展示 USDT
+            代币的读取与转账功能
+          </Text>
+          <Text color="orange">
+            当前链不支持，请切换到主网或 Sepolia 测试网
+          </Text>
         </Card>
       </Box>
     )
@@ -159,10 +171,10 @@ export default function Page() {
       <Flex direction="column" gap="4">
         <Card>
           <Heading size="4" mb="2">
-            Token 信息
+            代币信息
           </Heading>
           <Text size="2" color="gray" mb="4">
-            USDT 合约的基本信息
+            通过 useReadContracts 批量读取链上数据，优化多次调用性能
           </Text>
           <Flex direction="column" gap="2">
             <Flex justify="between">
@@ -192,10 +204,10 @@ export default function Page() {
 
         <Card>
           <Heading size="4" mb="2">
-            我的余额
+            账户余额
           </Heading>
           <Text size="2" color="gray" mb="4">
-            当前账户的 USDT 余额
+            使用 useConnection 获取连接状态与地址，实时查询余额
           </Text>
           <Flex align="baseline" gap="2">
             <Text size="8" weight="bold">
@@ -212,10 +224,11 @@ export default function Page() {
 
         <Card>
           <Heading size="4" mb="2">
-            转账
+            代币转账
           </Heading>
           <Text size="2" color="gray" mb="4">
-            向其他地址转账 USDT
+            使用 useWriteContract + useWaitForTransactionReceipt
+            实现交易提交与确认追踪
           </Text>
           <Flex direction="column" gap="4">
             <Box>

@@ -351,30 +351,50 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 ## ✅ Todo List
 
-- [ ] 善于使用 emoji 表情
-- [ ] 优化 tanstack query，添加 @lukemorales/query-key-factory 的支持和例子
-  - 读操作不要使用 toast 提示（可使用静态组件显示错误），刷新读取可使用 toast
-  - 写操作手动触发，可使用 toast 提示，参考 https://tanstack.com/query/latest/docs/framework/react/quick-start
-  - 需要手动点击刷新，需要 enabled: false 设置
-  - useQuery、useQueries、useMutation 常用 hooks 给出示例，服务器等接口示例，接口类型不应该手写，应该使用zod 验证模式生成
-- 完善 AI 辅助开发
-  - Claude.md 文档
-  - 需求文档的具体结构、示例
-  - 适合当前架构的 Plugin，把 Skill + Slash Commands + Agents + MCP 一个 zip 压缩包就够了，简单快速
-- skill
-  - git-commit-helper
-  - 最佳实践和三方库的知识
-- Slash Commands
-  - commit-helper
-- AGENTS.md 文件
-  - 项目规范是否能代替 skill
-  - agents 文档 https://github.com/agentsmd/agents.md
-  - https://learnopencode.com/3-workflow/03-init.html
-- Callout 组件提示，封装：正常、警告、成功、失败、信息
-- [ ] react 自定义组件、hooks
-  - useComputedState
-  - react 问题，根据是否链接推断出 address 和 chainid 是否拥有
-  - 添加专门钱包没有链接的处理UI显示
-- [ ] UI
-  - 优化 UI 和一些描述文字
-- [ ] 安全性，token 基于 only Cookie
+### 核心功能增强
+
+- [ ] **TanStack Query 优化**
+  - [ ] 集成 [@lukemorales/query-key-factory](https://github.com/lukemorales/query-key-factory) 统一管理 queryKey
+  - [ ] 提供完整示例：useQuery、useQueries、useMutation
+  - [ ] 实现基于 Zod schema 的接口类型自动生成（替代手写类型）
+  - [ ] 完善错误处理 UI 模式（Skeleton → 错误组件 / Toast）
+
+- [ ] **Web3 钱包交互优化**
+  - [ ] 根据连接状态类型推断 address 和 chainId（TypeScript 类型收窄）
+  - [ ] 添加钱包未连接时的友好 UI 提示组件
+  - [ ] 优化 useComputedState hook 示例与文档
+
+### 组件库完善
+
+- [ ] **Callout 组件封装**
+  - 支持类型：info / success / warning / error / default
+  - 基于 Radix UI Callout 实现统一样式
+
+- [ ] **UI 细节优化**
+  - [ ] 优化各页面的描述文案，要求文案描述要和项目框架保持一致
+  - [ ] 统一 emoji 使用规范
+- [ ] **集成 vanilla-extract**
+  - https://vanilla-extract.style
+
+### AI 辅助开发完善
+
+- [ ] **项目配置文件**
+  - [ ] 创建 `AGENTS.md` - 定义项目规范、架构约定、最佳实践
+  - [ ] 创建 `CLAUDE.md` - Claude AI 辅助开发指南
+  - [ ] 补充需求文档模板与示例
+
+- [ ] **OpenCode 插件开发**
+  - [ ] 开发 Git Commit Helper Skill
+  - [ ] 开发 Commit Helper Slash Command
+  - [ ] 整合 Skills + Slash Commands + Agents + MCP 为一体化插件包
+
+- [ ] **参考资源整理**
+  - [agents.md 规范](https://github.com/agentsmd/agents.md)
+  - [OpenCode Workflow](https://learnopencode.com/3-workflow/03-init.html)
+
+### 安全性增强
+
+- [ ] **认证安全**
+  - [ ] 实现基于 HttpOnly Cookie 的 Token 管理
+  - [ ] 添加 CSRF 防护示例
+  - [ ] 完善环境变量敏感信息处理文档
