@@ -384,9 +384,10 @@ pnpm up -L --interactive  # 交互式选择升级依赖
   - [ ] 补充需求文档模板与示例
 
 - [ ] **OpenCode 插件开发**
-  - [ ] 开发 Git Commit Helper Skill
-  - [ ] 开发 Commit Helper Slash Command
-  - [ ] 整合 Skills + Slash Commands + Agents + MCP 为一体化插件包
+  - [ ] Skill
+    - Git Commit Helper 已完成
+  - [ ] Slash Command
+    - git-commit 已完成
 
 - [ ] **参考资源整理**
   - [agents.md 规范](https://github.com/agentsmd/agents.md)
