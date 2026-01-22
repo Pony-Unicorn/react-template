@@ -8,13 +8,8 @@ import { CopyButton } from '~/components/elements/CopyButton'
 
 const features = [
   {
-    title: 'React + Radix UI',
-    description: '强大且现代的前端 UI 架构',
-    icon: '🧱',
-  },
-  {
     title: 'Radix Themes',
-    description: '开箱即用的组件库，样式统一',
+    description: '强大且现代的 UI，样式统一',
     icon: '🎨',
   },
   {
@@ -31,11 +26,6 @@ const features = [
     title: '@reown/appkit',
     description: '一站式 DApp 构建集成方案',
     icon: '🚀',
-  },
-  {
-    title: '开箱即用',
-    description: '快速启动，支持拓展与定制',
-    icon: '⏱',
   },
 ]
 
