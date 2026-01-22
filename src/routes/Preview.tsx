@@ -54,24 +54,22 @@ function UseComputedStateSection() {
 
   return (
     <Card>
-      <Flex direction="column" gap="1">
-        <Heading size="4" mb="3">
-          useComputedState 示例
-        </Heading>
-        <Box mb="2">
+      <Flex direction="column" gap="5">
+        {/* 标题和描述区域 - 使用较小的间距 */}
+        <Flex direction="column" gap="2">
+          <Heading size="4">useComputedState 示例</Heading>
           <Text size="2" color="gray">
             自定义 Hook
             实现派生状态管理，维护原始值与格式化显示值，支持函数式更新与自动计算
           </Text>
-        </Box>
+        </Flex>
 
+        {/* 内容区域 - 使用统一的间距 */}
         <Flex direction="column" gap="4">
-          <Flex direction="column" gap="1">
-            <Box mb="3">
-              <Text size="2" color="gray">
-                真实值（数字）：
-              </Text>
-            </Box>
+          <Flex direction="column" gap="2">
+            <Text size="2" color="gray">
+              真实值（数字）：
+            </Text>
             <Flex gap="3" align="center" wrap="wrap">
               <TextField.Root
                 type="number"
@@ -97,36 +95,34 @@ function UseComputedStateSection() {
 
           <Grid columns={{ initial: '1', md: '2' }} gap="4">
             <Card variant="surface">
-              <Box mb="2">
+              <Flex direction="column" gap="2">
                 <Text size="2" color="gray">
                   派生显示值（格式化为人民币）：
                 </Text>
-              </Box>
-              <Text size="5" weight="medium">
-                {displayValue}
-              </Text>
+                <Text size="5" weight="medium">
+                  {displayValue}
+                </Text>
+              </Flex>
             </Card>
 
             <Card variant="surface">
-              <Box mb="2">
+              <Flex direction="column" gap="2">
                 <Text size="2" color="gray">
                   额外派生（平方，仅示例）：
                 </Text>
-              </Box>
-              <Text size="5" weight="medium">
-                {squared}
-              </Text>
+                <Text size="5" weight="medium">
+                  {squared}
+                </Text>
+              </Flex>
             </Card>
           </Grid>
 
           <Separator size="4" />
 
-          <Flex direction="column" gap="1">
-            <Box mb="3">
-              <Text size="2" color="gray">
-                快速操作：
-              </Text>
-            </Box>
+          <Flex direction="column" gap="2">
+            <Text size="2" color="gray">
+              快速操作：
+            </Text>
             <Flex gap="3" wrap="wrap">
               <Button onClick={() => setRealValue(66)}>设为 66</Button>
               <Button onClick={() => setRealValue(1000)}>设为 1000</Button>
@@ -157,129 +153,123 @@ function ZustandComputedStateSection() {
 
   return (
     <Card>
-      <Heading size="4" mb="3">
-        Zustand 状态管理示例
-      </Heading>
-      <Box mb="5">
-        <Text size="2" color="gray">
-          展示 Zustand Store 的最佳实践：使用 Selector 实现派生状态计算，配合
-          useShallow 优化重渲染性能
-        </Text>
-      </Box>
-
       <Flex direction="column" gap="5">
-        <Grid columns="1" gap="4">
-          <Box>
-            <Box mb="2">
+        {/* 标题和描述区域 - 使用较小的间距 */}
+        <Flex direction="column" gap="2">
+          <Heading size="4">Zustand 状态管理示例</Heading>
+          <Text size="2" color="gray">
+            展示 Zustand Store 的最佳实践：使用 Selector 实现派生状态计算，配合
+            useShallow 优化重渲染性能
+          </Text>
+        </Flex>
+
+        {/* 内容区域 - 使用统一的间距 */}
+        <Flex direction="column" gap="4">
+          <Grid columns="1" gap="4">
+            <Flex direction="column" gap="2">
               <Text size="2" color="gray">
                 姓氏：
               </Text>
-            </Box>
-            <TextField.Root
-              value={firstName}
-              onChange={(e) => updateFirstName(e.target.value)}
-              placeholder="请输入姓氏"
-            />
-          </Box>
-          <Box>
-            <Box mb="2">
+              <TextField.Root
+                value={firstName}
+                onChange={(e) => updateFirstName(e.target.value)}
+                placeholder="请输入姓氏"
+              />
+            </Flex>
+            <Flex direction="column" gap="2">
               <Text size="2" color="gray">
                 名字：
               </Text>
-            </Box>
-            <TextField.Root
-              value={lastName}
-              onChange={(e) => updateLastName(e.target.value)}
-              placeholder="请输入名字"
-            />
-          </Box>
-          <Box>
-            <Box mb="2">
+              <TextField.Root
+                value={lastName}
+                onChange={(e) => updateLastName(e.target.value)}
+                placeholder="请输入名字"
+              />
+            </Flex>
+            <Flex direction="column" gap="2">
               <Text size="2" color="gray">
                 年龄：
               </Text>
-            </Box>
-            <TextField.Root
-              type="number"
-              value={age}
-              onChange={(e) => updateAge(Number(e.target.value))}
-              placeholder="请输入年龄"
-            />
-          </Box>
-        </Grid>
+              <TextField.Root
+                type="number"
+                value={age}
+                onChange={(e) => updateAge(Number(e.target.value))}
+                placeholder="请输入年龄"
+              />
+            </Flex>
+          </Grid>
 
-        <Separator size="4" />
+          <Separator size="4" />
 
-        <Grid columns={{ initial: '1', md: '3' }} gap="4">
-          <Card variant="surface">
-            <Box mb="2">
-              <Text size="2" color="gray">
-                全名：
-              </Text>
-            </Box>
-            <Text size="3" weight="medium">
-              {fullName || '(未填写)'}
-            </Text>
-          </Card>
-          <Card variant="surface">
-            <Box mb="2">
-              <Text size="2" color="gray">
-                首字母：
-              </Text>
-            </Box>
-            <Text size="3" weight="medium">
-              {initials || '-'}
-            </Text>
-          </Card>
-          <Card variant="surface">
-            <Box mb="2">
-              <Text size="2" color="gray">
-                状态：
-              </Text>
-            </Box>
-            <Badge color={isAdult ? 'green' : 'orange'}>
-              {isAdult ? '成年' : '未成年'}
-            </Badge>
-          </Card>
-        </Grid>
+          <Grid columns={{ initial: '1', md: '3' }} gap="4">
+            <Card variant="surface">
+              <Flex direction="column" gap="2">
+                <Text size="2" color="gray">
+                  全名：
+                </Text>
+                <Text size="3" weight="medium">
+                  {fullName || '(未填写)'}
+                </Text>
+              </Flex>
+            </Card>
+            <Card variant="surface">
+              <Flex direction="column" gap="2">
+                <Text size="2" color="gray">
+                  首字母：
+                </Text>
+                <Text size="3" weight="medium">
+                  {initials || '-'}
+                </Text>
+              </Flex>
+            </Card>
+            <Card variant="surface">
+              <Flex direction="column" gap="2">
+                <Text size="2" color="gray">
+                  状态：
+                </Text>
+                <Badge color={isAdult ? 'green' : 'orange'}>
+                  {isAdult ? '成年' : '未成年'}
+                </Badge>
+              </Flex>
+            </Card>
+          </Grid>
 
-        <Separator size="4" />
+          <Separator size="4" />
 
-        <Flex direction="column" gap="1">
-          <Box mb="3">
+          <Flex direction="column" gap="2">
             <Text size="2" color="gray">
               快速填充示例：
             </Text>
-          </Box>
-          <Flex gap="3" wrap="wrap">
-            <Button
-              onClick={() => {
-                updateFirstName('张')
-                updateLastName('三')
-                updateAge(25)
-              }}
-            >
-              张三 (25岁)
-            </Button>
-            <Button
-              onClick={() => {
-                updateFirstName('李')
-                updateLastName('四')
-                updateAge(16)
-              }}
-            >
-              李四 (16岁)
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => {
-                updateFirstName('')
-                updateLastName('')
-                updateAge(0)
-              }}
-            >
-              清空
-            </Button>
+            <Flex gap="3" wrap="wrap">
+              <Button
+                onClick={() => {
+                  updateFirstName('张')
+                  updateLastName('三')
+                  updateAge(25)
+                }}
+              >
+                张三 (25岁)
+              </Button>
+              <Button
+                onClick={() => {
+                  updateFirstName('李')
+                  updateLastName('四')
+                  updateAge(16)
+                }}
+              >
+                李四 (16岁)
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  updateFirstName('')
+                  updateLastName('')
+                  updateAge(0)
+                }}
+              >
+                清空
+              </Button>
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
@@ -290,56 +280,58 @@ function ZustandComputedStateSection() {
 function SonnerDemo() {
   return (
     <Card>
-      <Heading size="4" mb="3">
-        Sonner Toast 示例
-      </Heading>
-      <Box mb="2">
-        <Text size="2" color="gray">
-          Sonner Toast 弹窗示例
-        </Text>
-      </Box>
+      <Flex direction="column" gap="5">
+        {/* 标题和描述区域 - 使用较小的间距 */}
+        <Flex direction="column" gap="2">
+          <Heading size="4">Sonner Toast 示例</Heading>
+          <Text size="2" color="gray">
+            Sonner Toast 弹窗示例
+          </Text>
+        </Flex>
 
-      <Flex gap="2">
-        <Button
-          variant="classic"
-          onClick={() => {
-            toast('This is a toast')
-          }}
-        >
-          toast
-        </Button>
-        <Button
-          // variant="classic"
-          onClick={() => {
-            toast.warning('This is a toast')
-          }}
-        >
-          warning
-        </Button>
-        <Button
-          variant="soft"
-          onClick={() => {
-            toast.success('This is a success toast')
-          }}
-        >
-          success
-        </Button>
-        <Button
-          color="red"
-          onClick={() => {
-            toast.error('This is a error')
-          }}
-        >
-          error
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() => {
-            toast.loading('Loading…')
-          }}
-        >
-          loading
-        </Button>
+        {/* 内容区域 */}
+        <Flex gap="3" wrap="wrap">
+          <Button
+            variant="classic"
+            onClick={() => {
+              toast('This is a toast')
+            }}
+          >
+            toast
+          </Button>
+          <Button
+            // variant="classic"
+            onClick={() => {
+              toast.warning('This is a toast')
+            }}
+          >
+            warning
+          </Button>
+          <Button
+            variant="soft"
+            onClick={() => {
+              toast.success('This is a success toast')
+            }}
+          >
+            success
+          </Button>
+          <Button
+            color="red"
+            onClick={() => {
+              toast.error('This is a error')
+            }}
+          >
+            error
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => {
+              toast.loading('Loading…')
+            }}
+          >
+            loading
+          </Button>
+        </Flex>
       </Flex>
     </Card>
   )
