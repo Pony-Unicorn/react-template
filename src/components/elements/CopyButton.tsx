@@ -1,6 +1,6 @@
-import { CheckIcon, CopyIcon } from '@radix-ui/react-icons'
-import { Button, Flex, Text } from '@radix-ui/themes'
+import { RiCheckLine, RiFileCopyLine } from '@remixicon/react'
 import { useEffect, useState } from 'react'
+import { Button } from '~/components/ui/button'
 
 interface CopyButtonProps {
   value: string
@@ -25,16 +25,19 @@ export function CopyButton({ value, children }: CopyButtonProps) {
 
   return (
     <Button
-      variant="soft"
+      variant="secondary"
       onClick={async () => {
         await copyToClipboard(value)
         setHasCopied(true)
       }}
+      className="flex items-center gap-2"
     >
-      <Flex align="center" gap="2">
-        {children && <Text size="2">{children}</Text>}
-        {hasCopied ? <CheckIcon /> : <CopyIcon />}
-      </Flex>
+      {children && <span className="text-sm">{children}</span>}
+      {hasCopied ? (
+        <RiCheckLine className="w-4 h-4" />
+      ) : (
+        <RiFileCopyLine className="w-4 h-4" />
+      )}
     </Button>
   )
 }

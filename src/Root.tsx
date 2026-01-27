@@ -1,16 +1,15 @@
-import { Container, Flex } from '@radix-ui/themes'
 import { Outlet } from 'react-router'
 import { Footer } from '~/components/shared/Footer'
 import { SiteHeader } from '~/components/shared/SiteHeader'
 
 export default function Root() {
   return (
-    <Flex gap="3" minHeight="100vh" direction="column">
+    <div className="flex flex-col min-h-screen gap-3">
       <SiteHeader />
-      <Container position="relative" align="center" flexShrink="1">
+      <div className="relative container mx-auto shrink">
         <Outlet />
-      </Container>
+      </div>
       <Footer />
-    </Flex>
+    </div>
   )
 }

@@ -1,15 +1,15 @@
 # Bolt
 
-> A fast, modular Web3 starter built with **React Router**, **Radix UI Themes**, **Motion**, and the latest in wallet tooling: **Wagmi**, **viem**, and **@reown/appkit**.
+> A fast, modular Web3 starter built with **React Router**, **shadcn/ui**, **Tailwind CSS**, **Motion**, and the latest in wallet tooling: **Wagmi**, **viem**, and **@reown/appkit**.
 
-Bolt 基于 React Router、Radix UI Themes、Motion 以及最新钱包工具（Wagmi、viem 和 @reown/appkit）构建的前端模版。
+Bolt 基于 React Router、shadcn/ui、Tailwind CSS、Motion 以及最新钱包工具（Wagmi、viem 和 @reown/appkit）构建的前端模版。
 
 ---
 
 ## ⚡️ 特性 Features
 
 - 🧱 **React Router 7** — 现代化的客户端路由解决方案
-- 🎨 **Radix UI Themes** — 强大的设计系统与开箱即用的主题化组件
+- 🎨 **shadcn/ui + Tailwind CSS v4** — 基于 Radix 原语的可定制组件库，配合原子化 CSS
 - 🌀 **Motion** — 炫酷且顺滑的动画体验（Framer Motion 的轻量级替代）
 - 🔐 **Wagmi + viem** — 下一代 EVM 钱包交互工具
 - 🚀 **@reown/appkit** — 一站式 DApp 钱包连接集成方案
@@ -98,8 +98,9 @@ pnpm run deploy
 
 - [React 19](https://react.dev/) - The library for web and native user interfaces
 - [React Router 7](https://reactrouter.com/) - 声明式路由库，支持嵌套路由与数据加载
-- [Radix UI Themes](https://www.radix-ui.com/themes) - 完整的设计系统，提供开箱即用的主题化组件
-- [Radix UI Icons](https://www.radix-ui.com/icons) - 精心设计的图标库
+- [shadcn/ui](https://ui.shadcn.com/) - 基于 Radix 原语的可复制粘贴组件库
+- [Tailwind CSS v4](https://tailwindcss.com/) - 原子化 CSS 框架
+- [Remix Icon](https://remixicon.com/) - 开源图标库
 - [Motion](https://motion.dev/) - 现代化动画库（Framer Motion 的继任者）
 - [Font animation reference](https://variantvault.chrisabdo.dev/text-variants) - 字体动画参考
 - [Simple Icons](https://simpleicons.org/) - 流行品牌 SVG 图标
@@ -149,20 +150,24 @@ pnpm run deploy
   - Download your Pages project config `npx wrangler pages download config <PROJECT_NAME>`
 - Static Hosting, When deploying to static hosting, you can deploy React Router the same as any other single page application with React.
 
-## 🎨 Radix UI Themes Customization
+## 🎨 shadcn/ui 主题定制
 
-项目使用 **Radix UI Themes** 作为设计系统，支持强大的主题定制能力：
+项目使用 **shadcn/ui** (base-vega 风格) 作为组件库，配合 **Tailwind CSS v4**：
 
-- **主题配置位置**：`src/App.tsx`
+- **主题配置位置**：`src/app.css`
+- **组件配置**：`components.json`
 - **可配置项**：
-  - `accentColor` - 主题色（blue, green, red 等）
-  - `grayColor` - 灰度色板（slate, sand, gray 等）
-  - `appearance` - 明暗模式（light / dark）
-  - `radius` - 圆角风格（none, small, medium, large, full）
-  - `scaling` - UI 缩放比例（90% ~ 110%）
-  - `panelBackground` - 面板背景（solid / translucent）
+  - CSS 变量定义主题色（amber 主题）
+  - 支持明暗模式切换（通过 `dark` class）
+  - 圆角、间距等通过 Tailwind 类控制
 
-参考文档：[Radix UI Themes - Theme](https://www.radix-ui.com/themes/docs/theme/overview)
+### 添加新组件
+
+```bash
+pnpm dlx shadcn@latest add [component-name]
+```
+
+参考文档：[shadcn/ui - Components](https://ui.shadcn.com/docs/components)
 
 ---
 
@@ -178,7 +183,7 @@ pnpm run deploy
                           │
 ┌─────────────────────────────────────────────────────┐
 │                  UI Components                       │
-│        Radix UI Themes (Design System)               │
+│        shadcn/ui + Tailwind CSS v4                   │
 │        Motion (Animations)                           │
 └─────────────────────────────────────────────────────┘
                           │
@@ -203,7 +208,7 @@ pnpm run deploy
 **1. 应用启动流程**
 
 ```
-main.tsx → App.tsx (Theme + AppKitProvider + BrowserRouter) → Root.tsx (Layout) → Route Pages
+main.tsx → App.tsx (AppKitProvider + BrowserRouter) → Root.tsx (Layout) → Route Pages
 ```
 
 **2. 钱包连接流程**
@@ -240,9 +245,9 @@ ky 发起 HTTP 请求 / viem 调用合约
 
 ```
 src/
-├── app.css                    # 全局样式文件
+├── app.css                    # 全局样式 + Tailwind CSS 主题变量
 ├── main.tsx                   # 应用入口，渲染根组件
-├── App.tsx                    # 根组件，配置 Theme + AppKitProvider + BrowserRouter + Routes
+├── App.tsx                    # 根组件，配置 AppKitProvider + BrowserRouter + Routes
 ├── Root.tsx                   # 布局组件（SiteHeader + Outlet + Footer）
 
 ├── routes/                    # 页面路由组件
@@ -260,6 +265,12 @@ src/
 │       └── types.ts          # 模块专属类型
 
 ├── components/                # 通用组件
+│   ├── ui/                   # shadcn/ui 组件
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── badge.tsx
+│   │   ├── input.tsx
+│   │   └── separator.tsx
 │   ├── shared/               # 全局共享组件与业务逻辑相关（Header、NotFound 等），具有一定的复杂度
 │   │   ├── SiteHeader.tsx
 │   │   ├── Footer.tsx
@@ -269,6 +280,9 @@ src/
 │   │   └── ScreenSize.tsx
 │   └── react-bits/           # 动画组件或第三方组件扩展
 │       └── FuzzyText.tsx
+
+├── lib/                       # 工具库
+│   └── utils.ts              # cn() 等工具函数
 
 ├── context/                   # React Context Providers
 │   └── AppKitProvider.tsx    # Wagmi + TanStack Query + AppKit 配置
@@ -316,9 +330,11 @@ llms/                          # AI 辅助开发文档
 | ------------------------ | ----------------------------------------- |
 | `routes/`                | 页面级组件，与路由一一对应                |
 | `features/`              | 大型业务模块，聚合相关组件、hooks、API    |
+| `components/ui/`         | shadcn/ui 组件                            |
 | `components/shared/`     | 跨页面复用的全局组件（Layout、Header 等） |
 | `components/elements/`   | 小型、通用的 UI 组件                      |
 | `components/react-bits/` | 动画组件或第三方扩展组件                  |
+| `lib/`                   | 工具库（cn 等）                           |
 | `context/`               | React Context 与 Providers                |
 | `hooks/`                 | 可复用的自定义 Hooks                      |
 | `store/`                 | Zustand 状态管理                          |
@@ -349,6 +365,13 @@ pnpm up -L [pkg]    # 将指定依赖升级到最新版本（忽略 semver）
 pnpm up -L --interactive  # 交互式选择升级依赖
 ```
 
+### shadcn/ui 组件管理
+
+```bash
+pnpm dlx shadcn@latest add [component]  # 添加组件
+pnpm dlx shadcn@latest diff [component] # 检查组件更新
+```
+
 ## ✅ Todo List
 
 ### 核心功能增强
@@ -368,10 +391,7 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 - [ ] **Callout 组件封装**
   - 支持类型：info / success / warning / error / default
-  - 基于 Radix UI Callout 实现统一样式
-
-- [ ] **集成 vanilla-extract**
-  - https://vanilla-extract.style
+  - 基于 shadcn/ui Alert 组件实现统一样式
 
 ### AI 辅助开发完善
 
@@ -385,19 +405,13 @@ pnpm up -L --interactive  # 交互式选择升级依赖
   - [ ] Skill
     - Git Commit Helper 已完成
     - ky、react-query、表单等如何写都是三方库，
-    定义项目规范、架构约定、最佳实践，还是以文档的形式，然后 skill 加载的方式，或者每次对话都携带最佳实践/规范
+      定义项目规范、架构约定、最佳实践，还是以文档的形式，然后 skill 加载的方式，或者每次对话都携带最佳实践/规范
   - [ ] Slash Command
     - git-commit 已完成
 
 - [ ] **参考资源整理**
   - [agents.md 规范](https://github.com/agentsmd/agents.md)
   - [OpenCode Workflow](https://learnopencode.com/3-workflow/03-init.html)
-
-### 调研
-
-- 评估是否还是继续使用 shadcn/ui
-  - 封装 radix-ui-themes 的布局和排版组件
-  - 断点的封装
 
 ### 安全性增强
 

@@ -1,24 +1,38 @@
-import { Badge, Box } from '@radix-ui/themes'
-
-const BREAKPOINTS = [
-  { name: 'xl', display: { initial: 'none', xl: 'block' } },
-  { name: 'lg', display: { initial: 'none', lg: 'block', xl: 'none' } },
-  { name: 'md', display: { initial: 'none', md: 'block', lg: 'none' } },
-  { name: 'sm', display: { initial: 'none', sm: 'block', md: 'none' } },
-  { name: 'xs', display: { initial: 'none', xs: 'block', sm: 'none' } },
-  { name: 'initial', display: { initial: 'block', xs: 'none' } },
-] as const
+import { Badge } from '~/components/ui/badge'
 
 export function ScreenSize() {
   return (
-    <Box position="absolute" left="1" bottom="2">
-      {BREAKPOINTS.map(({ name, display }) => (
-        <Box key={name} display={display}>
-          <Badge variant="soft" color="gray" size="1" highContrast>
-            {name}
-          </Badge>
-        </Box>
-      ))}
-    </Box>
+    <div className="absolute bottom-2 left-1">
+      <div className="block sm:hidden">
+        <Badge variant="secondary" className="text-xs">
+          xs
+        </Badge>
+      </div>
+      <div className="hidden sm:block md:hidden">
+        <Badge variant="secondary" className="text-xs">
+          sm
+        </Badge>
+      </div>
+      <div className="hidden md:block lg:hidden">
+        <Badge variant="secondary" className="text-xs">
+          md
+        </Badge>
+      </div>
+      <div className="hidden lg:block xl:hidden">
+        <Badge variant="secondary" className="text-xs">
+          lg
+        </Badge>
+      </div>
+      <div className="hidden xl:block 2xl:hidden">
+        <Badge variant="secondary" className="text-xs">
+          xl
+        </Badge>
+      </div>
+      <div className="hidden 2xl:block">
+        <Badge variant="secondary" className="text-xs">
+          2xl
+        </Badge>
+      </div>
+    </div>
   )
 }

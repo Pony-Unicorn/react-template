@@ -1,130 +1,93 @@
-import { ArrowTopRightIcon } from '@radix-ui/react-icons'
-import { Box, Flex, Link as RadixLink } from '@radix-ui/themes'
+import { RiArrowRightUpLine } from '@remixicon/react'
 import { AppKitButton } from '@reown/appkit/react'
 import { Link, NavLink } from 'react-router'
 import logoTransparent from '~/assets/logo-transparent-home.png'
 
 export function SiteHeader() {
   return (
-    <Box
-      asChild
-      position="sticky"
-      top="0"
-      style={{
-        zIndex: 50,
-        borderBottom: '1px solid var(--gray-a5)',
-        backdropFilter: 'blur(8px)',
-        backgroundColor: 'var(--color-panel-translucent)',
-      }}
-    >
-      <header>
-        <Flex
-          align="center"
-          justify="between"
-          gap="6"
-          px="4"
-          py="2"
-          maxWidth="1200px"
-          mx="auto"
-        >
-          {/* Logo */}
-          <Link to="/">
-            <img src={logoTransparent} width={80} height={40} alt="bolt logo" />
-          </Link>
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center justify-between px-4 py-2 mx-auto">
+        {/* Logo */}
+        <Link to="/">
+          <img src={logoTransparent} width={80} height={40} alt="bolt logo" />
+        </Link>
 
-          {/* Navigation */}
-          <Flex asChild align="center" gap="5">
-            <nav>
-              <NavLink to="/" end>
-                {({ isActive }) => (
-                  <RadixLink
-                    asChild
-                    size="2"
-                    weight="medium"
-                    color={isActive ? undefined : 'gray'}
-                    highContrast={isActive}
-                  >
-                    <span>首页</span>
-                  </RadixLink>
-                )}
-              </NavLink>
-
-              <NavLink to="/preview">
-                {({ isActive }) => (
-                  <RadixLink
-                    asChild
-                    size="2"
-                    weight="medium"
-                    color={isActive ? undefined : 'gray'}
-                    highContrast={isActive}
-                  >
-                    <span>预览</span>
-                  </RadixLink>
-                )}
-              </NavLink>
-
-              <NavLink to="/contract">
-                {({ isActive }) => (
-                  <RadixLink
-                    asChild
-                    size="2"
-                    weight="medium"
-                    color={isActive ? undefined : 'gray'}
-                    highContrast={isActive}
-                  >
-                    <span>合约</span>
-                  </RadixLink>
-                )}
-              </NavLink>
-
-              <NavLink to="/about">
-                {({ isActive }) => (
-                  <RadixLink
-                    asChild
-                    size="2"
-                    weight="medium"
-                    color={isActive ? undefined : 'gray'}
-                    highContrast={isActive}
-                  >
-                    <span>关于</span>
-                  </RadixLink>
-                )}
-              </NavLink>
-
-              <RadixLink
-                href="https://github.com/Pony-Unicorn/web3-template"
-                target="_blank"
-                size="2"
-                weight="medium"
-                color="gray"
+        {/* Navigation */}
+        <nav className="flex items-center gap-5">
+          <NavLink to="/" end>
+            {({ isActive }) => (
+              <span
+                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? 'text-foreground' : 'text-muted-foreground'
+                }`}
               >
-                <Flex align="center" gap="1">
-                  Github
-                  <ArrowTopRightIcon width={12} height={12} />
-                </Flex>
-              </RadixLink>
+                首页
+              </span>
+            )}
+          </NavLink>
 
-              <RadixLink
-                href="https://x.com/shunfengge"
-                target="_blank"
-                size="2"
-                weight="medium"
-                color="gray"
+          <NavLink to="/preview">
+            {({ isActive }) => (
+              <span
+                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? 'text-foreground' : 'text-muted-foreground'
+                }`}
               >
-                <Flex align="center" gap="1">
-                  X
-                  <ArrowTopRightIcon width={12} height={12} />
-                </Flex>
-              </RadixLink>
-            </nav>
-          </Flex>
+                预览
+              </span>
+            )}
+          </NavLink>
 
-          {/* Right side actions */}
-          <Box>
-            <AppKitButton />
-          </Box>
-        </Flex>
-      </header>
-    </Box>
+          <NavLink to="/contract">
+            {({ isActive }) => (
+              <span
+                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? 'text-foreground' : 'text-muted-foreground'
+                }`}
+              >
+                合约
+              </span>
+            )}
+          </NavLink>
+
+          <NavLink to="/about">
+            {({ isActive }) => (
+              <span
+                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                  isActive ? 'text-foreground' : 'text-muted-foreground'
+                }`}
+              >
+                关于
+              </span>
+            )}
+          </NavLink>
+
+          <a
+            href="https://github.com/Pony-Unicorn/web3-template"
+            target="_blank"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+            rel="noreferrer"
+          >
+            Github
+            <RiArrowRightUpLine className="w-3 h-3" />
+          </a>
+
+          <a
+            href="https://x.com/shunfengge"
+            target="_blank"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+            rel="noreferrer"
+          >
+            X
+            <RiArrowRightUpLine className="w-3 h-3" />
+          </a>
+        </nav>
+
+        {/* Right side actions */}
+        <div>
+          <AppKitButton />
+        </div>
+      </div>
+    </header>
   )
 }

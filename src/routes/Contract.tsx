@@ -1,13 +1,3 @@
-import {
-  Box,
-  Button,
-  Card,
-  Code,
-  Flex,
-  Heading,
-  Text,
-  TextField,
-} from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { formatUnits, parseUnits, type Address } from 'viem'
@@ -18,6 +8,15 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from 'wagmi'
+import { Button } from '~/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card'
+import { Input } from '~/components/ui/input'
 import USDTAbi from '~/constants/USDT.abi'
 import { usdtAddress } from '~/constants/app'
 
@@ -122,39 +121,41 @@ export default function Page() {
 
   if (!isConnected) {
     return (
-      <Box p="6" maxWidth="800px" mx="auto">
+      <div className="p-6 max-w-[800px] mx-auto">
         <Card>
-          <Heading size="4" mb="2">
-            合约交互示例
-          </Heading>
-          <Text size="2" color="gray">
-            基于 Wagmi + viem 实现类型安全的 EVM 合约交互，展示 USDT
-            代币的读取与转账功能
-          </Text>
-          <Text color="orange" mt="3">
-            请先连接钱包
-          </Text>
+          <CardHeader>
+            <CardTitle>合约交互示例</CardTitle>
+            <CardDescription>
+              基于 Wagmi + viem 实现类型安全的 EVM 合约交互，展示 USDT
+              代币的读取与转账功能
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-orange-500 mt-3">请先连接钱包</p>
+          </CardContent>
         </Card>
-      </Box>
+      </div>
     )
   }
 
   if (!contractAddress) {
     return (
-      <Box p="6" maxWidth="800px" mx="auto">
+      <div className="p-6 max-w-[800px] mx-auto">
         <Card>
-          <Heading size="4" mb="2">
-            合约交互示例
-          </Heading>
-          <Text size="2" color="gray" mb="3">
-            基于 Wagmi + viem 实现类型安全的 EVM 合约交互，展示 USDT
-            代币的读取与转账功能
-          </Text>
-          <Text color="orange">
-            当前链不支持，请切换到主网或 Sepolia 测试网
-          </Text>
+          <CardHeader>
+            <CardTitle>合约交互示例</CardTitle>
+            <CardDescription>
+              基于 Wagmi + viem 实现类型安全的 EVM 合约交互，展示 USDT
+              代币的读取与转账功能
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-orange-500">
+              当前链不支持，请切换到主网或 Sepolia 测试网
+            </p>
+          </CardContent>
         </Card>
-      </Box>
+      </div>
     )
   }
 
@@ -167,92 +168,90 @@ export default function Page() {
       : '0'
 
   return (
-    <Box p="6" maxWidth="800px" mx="auto">
-      <Flex direction="column" gap="4">
+    <div className="p-6 max-w-[800px] mx-auto">
+      <div className="flex flex-col gap-4">
         <Card>
-          <Heading size="4" mb="2">
-            代币信息
-          </Heading>
-          <Text size="2" color="gray" mb="4">
-            通过 useReadContracts 批量读取链上数据，优化多次调用性能
-          </Text>
-          <Flex direction="column" gap="2">
-            <Flex justify="between">
-              <Text color="gray">名称:</Text>
-              <Text weight="medium">{tokenName || '-'}</Text>
-            </Flex>
-            <Flex justify="between">
-              <Text color="gray">符号:</Text>
-              <Text weight="medium">{tokenSymbol || '-'}</Text>
-            </Flex>
-            <Flex justify="between">
-              <Text color="gray">精度:</Text>
-              <Text weight="medium">{decimals?.toString() || '-'}</Text>
-            </Flex>
-            <Flex justify="between">
-              <Text color="gray">总供应量:</Text>
-              <Text weight="medium">
+          <CardHeader>
+            <CardTitle>代币信息</CardTitle>
+            <CardDescription>
+              通过 useReadContracts 批量读取链上数据，优化多次调用性能
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">名称:</span>
+              <span className="font-medium">{tokenName || '-'}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">符号:</span>
+              <span className="font-medium">{tokenSymbol || '-'}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">精度:</span>
+              <span className="font-medium">{decimals?.toString() || '-'}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">总供应量:</span>
+              <span className="font-medium">
                 {formattedTotalSupply} {tokenSymbol}
-              </Text>
-            </Flex>
-            <Flex justify="between">
-              <Text color="gray">合约地址:</Text>
-              <Code size="1">{contractAddress}</Code>
-            </Flex>
-          </Flex>
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">合约地址:</span>
+              <code className="text-xs bg-muted p-1 rounded">
+                {contractAddress}
+              </code>
+            </div>
+          </CardContent>
         </Card>
 
         <Card>
-          <Heading size="4" mb="2">
-            账户余额
-          </Heading>
-          <Text size="2" color="gray" mb="4">
-            使用 useConnection 获取连接状态与地址，实时查询余额
-          </Text>
-          <Flex align="baseline" gap="2">
-            <Text size="8" weight="bold">
-              {formattedBalance}
-            </Text>
-            <Text size="4" color="gray">
-              {tokenSymbol}
-            </Text>
-          </Flex>
-          <Text size="1" color="gray" mt="2">
-            地址: {address}
-          </Text>
+          <CardHeader>
+            <CardTitle>账户余额</CardTitle>
+            <CardDescription>
+              使用 useConnection 获取连接状态与地址，实时查询余额
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-baseline gap-2">
+              <span className="text-4xl font-bold">{formattedBalance}</span>
+              <span className="text-lg text-muted-foreground">
+                {tokenSymbol}
+              </span>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              地址: {address}
+            </p>
+          </CardContent>
         </Card>
 
         <Card>
-          <Heading size="4" mb="2">
-            代币转账
-          </Heading>
-          <Text size="2" color="gray" mb="4">
-            使用 useWriteContract + useWaitForTransactionReceipt
-            实现交易提交与确认追踪
-          </Text>
-          <Flex direction="column" gap="4">
-            <Box>
-              <Text as="label" size="2" weight="medium" mb="1">
-                接收地址
-              </Text>
-              <TextField.Root
+          <CardHeader>
+            <CardTitle>代币转账</CardTitle>
+            <CardDescription>
+              使用 useWriteContract + useWaitForTransactionReceipt
+              实现交易提交与确认追踪
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <div>
+              <label className="text-sm font-medium mb-1 block">接收地址</label>
+              <Input
                 placeholder="0x..."
                 value={recipient}
                 onChange={(e) => setRecipient(e.target.value)}
               />
-            </Box>
+            </div>
 
-            <Box>
-              <Text as="label" size="2" weight="medium" mb="1">
-                转账金额
-              </Text>
-              <TextField.Root
+            <div>
+              <label className="text-sm font-medium mb-1 block">转账金额</label>
+              <Input
                 type="number"
                 placeholder="0.0"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
-            </Box>
+            </div>
 
             <Button
               onClick={handleTransfer}
@@ -264,9 +263,9 @@ export default function Page() {
                   ? '交易确认中...'
                   : '转账'}
             </Button>
-          </Flex>
+          </CardContent>
         </Card>
-      </Flex>
-    </Box>
+      </div>
+    </div>
   )
 }

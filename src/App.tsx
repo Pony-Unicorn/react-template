@@ -1,5 +1,4 @@
-import { Box, Theme } from '@radix-ui/themes'
-import '@radix-ui/themes/styles.css'
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import '~/app.css'
 import { ScreenSize } from '~/components/elements/ScreenSize'
@@ -14,50 +13,38 @@ import Home from '~/routes/Home'
 import Preview from '~/routes/Preview'
 
 export default function App() {
+  useEffect(() => {
+    document.documentElement.classList.add('dark')
+  }, [])
+
   return (
-    <Theme
-      accentColor="blue"
-      grayColor="slate"
-      appearance="dark"
-      radius="medium"
-      scaling="100%"
-      panelBackground="translucent"
-    >
-      <AppKitProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Root />}>
-              <Route index element={<Home />} />
-              <Route path="about" element={<About />} />
-              <Route path="contract" element={<Contract />} />
-              <Route path="preview" element={<Preview />} />
-              <Route
-                path="*"
-                element={
-                  <NotFound
-                    message="404"
-                    details="The requested page could not be found."
-                  />
-                }
-              />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        <WrapToaster />
-        {/* debug info Container*/}
-        {IS_LOCAL && (
-          <Box
-            position="fixed"
-            top="0"
-            left="0"
-            width="100vw"
-            height="100vh"
-            style={{ pointerEvents: 'none' }}
-          >
-            <ScreenSize />
-          </Box>
-        )}
-      </AppKitProvider>
-    </Theme>
+    <AppKitProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Root />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="contract" element={<Contract />} />
+            <Route path="preview" element={<Preview />} />
+            <Route
+              path="*"
+              element={
+                <NotFound
+                  message="404"
+                  details="The requested page could not be found."
+                />
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <WrapToaster />
+      {/* debug info Container*/}
+      {IS_LOCAL && (
+        <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none">
+          <ScreenSize />
+        </div>
+      )}
+    </AppKitProvider>
   )
 }

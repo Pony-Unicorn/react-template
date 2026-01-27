@@ -1,8 +1,8 @@
-import { HomeIcon } from '@radix-ui/react-icons'
-import { Box, Button, Code, Flex, Text } from '@radix-ui/themes'
+import { RiHomeLine } from '@remixicon/react'
 import { motion } from 'motion/react'
 import { Link } from 'react-router'
 import FuzzyText from '~/components/react-bits/FuzzyText'
+import { Button } from '~/components/ui/button'
 
 interface NotFoundProps {
   message: string
@@ -12,41 +12,29 @@ interface NotFoundProps {
 
 export default function NotFound({ message, details, stack }: NotFoundProps) {
   return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      py="9"
-      minHeight="60vh"
-    >
+    <div className="flex flex-col items-center justify-center py-24 min-h-[60vh]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Flex direction="column" align="center" gap="4" mb="6">
-          <Box mb="2">
+        <div className="flex flex-col items-center gap-4 mb-6">
+          <div className="mb-2">
             <FuzzyText baseIntensity={0.3} color="#ee9a00ff">
               {message}
             </FuzzyText>
-          </Box>
+          </div>
 
-          <Text size="4" color="gray" align="center">
-            {details}
-          </Text>
+          <p className="text-lg text-muted-foreground text-center">{details}</p>
 
           {stack && (
-            <Box
-              p="4"
-              style={{
-                width: '100%',
-                overflow: 'auto',
-              }}
-            >
-              <Code size="1">{stack}</Code>
-            </Box>
+            <div className="p-4 w-full overflow-auto">
+              <code className="text-xs font-mono bg-muted p-1 rounded">
+                {stack}
+              </code>
+            </div>
           )}
-        </Flex>
+        </div>
       </motion.div>
 
       <motion.div
@@ -54,13 +42,11 @@ export default function NotFound({ message, details, stack }: NotFoundProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Button asChild size="3">
-          <Link to="/">
-            <HomeIcon />
-            Go Home
-          </Link>
+        <Button size="lg" render={<Link to="/" />}>
+          <RiHomeLine className="mr-2 h-4 w-4" />
+          Go Home
         </Button>
       </motion.div>
-    </Flex>
+    </div>
   )
 }

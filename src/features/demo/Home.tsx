@@ -1,10 +1,10 @@
-import { Badge, Box, Card, Flex, Grid, Heading, Text } from '@radix-ui/themes'
 import { motion } from 'motion/react'
 
+import { CopyButton } from '~/components/elements/CopyButton'
+import { Badge } from '~/components/ui/badge'
+import { Card, CardContent } from '~/components/ui/card'
 import { IS_DEV, VERSION } from '~/constants/app'
 import { env } from '~/constants/env'
-
-import { CopyButton } from '~/components/elements/CopyButton'
 
 const features = [
   {
@@ -33,24 +33,24 @@ const createCommandStr = 'pnpm dlx degit Pony-Unicorn/web3-template my-project'
 
 export default function Home() {
   return (
-    <Box p="6">
+    <div className="p-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Flex direction="column" align="center" gap="4" mb="8">
-          <Heading size="8" align="center">
+        <div className="flex flex-col items-center gap-4 mb-8">
+          <h1 className="text-4xl font-bold text-center">
             Bolt 是构建 Dapp 的新起点
-          </Heading>
-          <Text size="4" color="gray" align="center">
+          </h1>
+          <p className="text-lg text-muted-foreground text-center">
             快速启动，模块清晰，组件现代，是你构建下一代 Web3 应用的理想起点
-          </Text>
+          </p>
           <CopyButton value={createCommandStr}>{createCommandStr}</CopyButton>
-        </Flex>
+        </div>
       </motion.div>
 
-      <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="4" mb="8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {features.map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -59,62 +59,55 @@ export default function Home() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Card>
-              <Flex direction="column" gap="2">
-                <Text size="6">{feature.icon}</Text>
-                <Heading size="4">{feature.title}</Heading>
-                <Text size="2" color="gray">
+              <CardContent className="flex flex-col gap-2 pt-6">
+                <span className="text-2xl">{feature.icon}</span>
+                <h3 className="text-xl font-semibold">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground">
                   {feature.description}
-                </Text>
-              </Flex>
+                </p>
+              </CardContent>
             </Card>
           </motion.div>
         ))}
-      </Grid>
+      </div>
 
-      <Card mb="8">
-        <Flex direction="column" gap="4">
-          <Heading size="5" align="center">
-            框架信息
-          </Heading>
-          <Grid columns="2" gap="4" maxWidth="400px" mx="auto">
-            <Flex gap="2" align="center">
-              <Text size="2" color="gray" weight="medium">
+      <Card className="mb-8">
+        <CardContent className="flex flex-col gap-4 pt-6">
+          <h2 className="text-2xl font-semibold text-center">框架信息</h2>
+          <div className="grid grid-cols-2 gap-4 max-w-[400px] mx-auto">
+            <div className="flex gap-2 items-center">
+              <span className="text-sm font-medium text-muted-foreground">
                 版本:
-              </Text>
-              <Badge variant="surface">{VERSION}</Badge>
-            </Flex>
-            <Flex gap="2" align="center">
-              <Text size="2" color="gray" weight="medium">
+              </span>
+              <Badge variant="secondary">{VERSION}</Badge>
+            </div>
+            <div className="flex gap-2 items-center">
+              <span className="text-sm font-medium text-muted-foreground">
                 模式:
-              </Text>
+              </span>
               <Badge variant="outline">{env.VITE_APP_MODE}</Badge>
-            </Flex>
-            <Flex gap="2" align="center">
-              <Text size="2" color="gray" weight="medium">
+            </div>
+            <div className="flex gap-2 items-center">
+              <span className="text-sm font-medium text-muted-foreground">
                 使用测试网:
-              </Text>
-              <Badge
-                variant={IS_DEV ? 'solid' : 'outline'}
-                color={IS_DEV ? 'red' : 'blue'}
-              >
+              </span>
+              <Badge variant={IS_DEV ? 'destructive' : 'outline'}>
                 {IS_DEV.toString().toUpperCase()}
               </Badge>
-            </Flex>
-            <Flex gap="2" align="center">
-              <Text size="2" color="gray" weight="medium">
+            </div>
+            <div className="flex gap-2 items-center">
+              <span className="text-sm font-medium text-muted-foreground">
                 最后更新:
-              </Text>
-              <Badge variant="surface">2025-12-8</Badge>
-            </Flex>
-          </Grid>
-        </Flex>
+              </span>
+              <Badge variant="secondary">2025-12-8</Badge>
+            </div>
+          </div>
+        </CardContent>
       </Card>
 
-      <Box>
-        <Heading size="5" align="center" mb="4">
-          技术栈
-        </Heading>
-        <Flex wrap="wrap" justify="center" gap="3">
+      <div>
+        <h2 className="text-2xl font-semibold text-center mb-4">技术栈</h2>
+        <div className="flex flex-wrap justify-center gap-3">
           {[
             'React Router',
             'TypeScript',
@@ -125,12 +118,12 @@ export default function Home() {
             'wagmi',
             'viem',
           ].map((tech) => (
-            <Badge key={tech} variant="outline" size="2">
+            <Badge key={tech} variant="outline">
               {tech}
             </Badge>
           ))}
-        </Flex>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   )
 }
