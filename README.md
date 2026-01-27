@@ -377,18 +377,27 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 - [ ] **项目配置文件**
   - [ ] 创建 `AGENTS.md` - 定义项目规范、架构约定、最佳实践
+    - 命名规范、目录规范、表单使用。react hook、架构、用到的三方库简要说明
   - [ ] 创建 `CLAUDE.md` - Claude AI 辅助开发指南
   - [ ] 补充需求文档模板与示例
 
 - [ ] **OpenCode 插件开发**
   - [ ] Skill
     - Git Commit Helper 已完成
+    - ky、react-query、表单等如何写都是三方库，
+    定义项目规范、架构约定、最佳实践，还是以文档的形式，然后 skill 加载的方式，或者每次对话都携带最佳实践/规范
   - [ ] Slash Command
     - git-commit 已完成
 
 - [ ] **参考资源整理**
   - [agents.md 规范](https://github.com/agentsmd/agents.md)
   - [OpenCode Workflow](https://learnopencode.com/3-workflow/03-init.html)
+
+### 调研
+
+- 评估是否还是继续使用 shadcn/ui
+  - 封装 radix-ui-themes 的布局和排版组件
+  - 断点的封装
 
 ### 安全性增强
 
