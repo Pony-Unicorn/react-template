@@ -33,7 +33,7 @@ const createCommandStr = 'pnpm dlx degit Pony-Unicorn/web3-template my-project'
 
 export default function Home() {
   return (
-    <div className="py-8 px-6">
+    <div className="py-8 px-6 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
