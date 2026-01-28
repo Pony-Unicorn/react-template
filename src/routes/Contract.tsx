@@ -131,7 +131,7 @@ export default function Page() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-orange-500 mt-3">请先连接钱包</p>
+            <p className="text-muted-foreground mt-3">请先连接钱包</p>
           </CardContent>
         </Card>
       </div>
@@ -150,7 +150,7 @@ export default function Page() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-orange-500">
+            <p className="text-muted-foreground">
               当前链不支持，请切换到主网或 Sepolia 测试网
             </p>
           </CardContent>

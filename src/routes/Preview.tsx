@@ -193,14 +193,7 @@ function ZustandComputedStateSection() {
             <CardContent className="p-4 flex flex-col gap-2">
               <p className="text-sm text-muted-foreground">状态：</p>
               <div>
-                <Badge
-                  variant={isAdult ? 'default' : 'secondary'}
-                  className={
-                    isAdult
-                      ? 'bg-green-600 hover:bg-green-700'
-                      : 'bg-orange-500 text-white hover:bg-orange-600'
-                  }
-                >
+                <Badge variant={isAdult ? 'default' : 'secondary'}>
                   {isAdult ? '成年' : '未成年'}
                 </Badge>
               </div>
