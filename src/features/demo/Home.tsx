@@ -33,7 +33,7 @@ const createCommandStr = 'pnpm dlx degit Pony-Unicorn/web3-template my-project'
 
 export default function Home() {
   return (
-    <div className="p-6">
+    <div className="py-8 px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {features.map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -74,7 +74,7 @@ export default function Home() {
       <Card className="mb-8">
         <CardContent className="flex flex-col gap-4 pt-6">
           <h2 className="text-2xl font-semibold text-center">框架信息</h2>
-          <div className="grid grid-cols-2 gap-4 max-w-[400px] mx-auto">
+          <div className="grid grid-cols-2 gap-4 max-w-100 mx-auto">
             <div className="flex gap-2 items-center">
               <span className="text-sm font-medium text-muted-foreground">
                 版本:

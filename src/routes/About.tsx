@@ -30,7 +30,7 @@ const staggerContainer = {
 
 export default function About() {
   return (
-    <div className="p-6">
+    <div className="py-8 px-6 max-w-4xl mx-auto">
       <motion.section
         initial="initial"
         animate="animate"
@@ -135,7 +135,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div variants={fadeInUp} transition={fadeInUpTransition}>
               <Card>
                 <CardContent className="pt-6">

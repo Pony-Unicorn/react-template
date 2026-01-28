@@ -121,7 +121,7 @@ export default function Page() {
 
   if (!isConnected) {
     return (
-      <div className="p-6 max-w-[800px] mx-auto">
+      <div className="py-8 px-6 max-w-4xl mx-auto">
         <Card>
           <CardHeader>
             <CardTitle>合约交互示例</CardTitle>
@@ -140,7 +140,7 @@ export default function Page() {
 
   if (!contractAddress) {
     return (
-      <div className="p-6 max-w-[800px] mx-auto">
+      <div className="py-8 px-6 max-w-4xl mx-auto">
         <Card>
           <CardHeader>
             <CardTitle>合约交互示例</CardTitle>
@@ -168,8 +168,8 @@ export default function Page() {
       : '0'
 
   return (
-    <div className="p-6 max-w-[800px] mx-auto">
-      <div className="flex flex-col gap-4">
+    <div className="py-8 px-6 max-w-4xl mx-auto">
+      <div className="flex flex-col gap-6">
         <Card>
           <CardHeader>
             <CardTitle>代币信息</CardTitle>

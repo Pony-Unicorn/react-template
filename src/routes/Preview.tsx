@@ -23,7 +23,7 @@ import {
 
 export default function Preview() {
   return (
-    <div className="p-6 max-w-[800px] mx-auto">
+    <div className="py-8 px-6 max-w-4xl mx-auto">
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-3">组件预览</h1>
         <p className="text-sm text-muted-foreground">
@@ -32,7 +32,7 @@ export default function Preview() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-6">
         <UseComputedStateSection />
         <ZustandComputedStateSection />
         <SonnerDemo />
