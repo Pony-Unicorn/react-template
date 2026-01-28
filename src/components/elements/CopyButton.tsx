@@ -34,9 +34,9 @@ export function CopyButton({ value, children }: CopyButtonProps) {
     >
       {children && <span className="text-sm">{children}</span>}
       {hasCopied ? (
-        <RiCheckLine className="w-4 h-4" />
+        <RiCheckLine className="h-4 w-4" />
       ) : (
-        <RiFileCopyLine className="w-4 h-4" />
+        <RiFileCopyLine className="h-4 w-4" />
       )}
     </Button>
   )

@@ -5,8 +5,8 @@ import logoTransparent from '~/assets/logo-transparent-home.png'
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center justify-between px-4 py-2 mx-auto">
+    <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+      <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 py-2">
         {/* Logo */}
         <Link to="/">
           <img src={logoTransparent} width={80} height={40} alt="bolt logo" />
@@ -17,7 +17,7 @@ export function SiteHeader() {
           <NavLink to="/" end>
             {({ isActive }) => (
               <span
-                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                className={`hover:text-foreground text-sm font-medium transition-colors ${
                   isActive ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >
@@ -29,7 +29,7 @@ export function SiteHeader() {
           <NavLink to="/preview">
             {({ isActive }) => (
               <span
-                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                className={`hover:text-foreground text-sm font-medium transition-colors ${
                   isActive ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >
@@ -41,7 +41,7 @@ export function SiteHeader() {
           <NavLink to="/contract">
             {({ isActive }) => (
               <span
-                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                className={`hover:text-foreground text-sm font-medium transition-colors ${
                   isActive ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >
@@ -53,7 +53,7 @@ export function SiteHeader() {
           <NavLink to="/about">
             {({ isActive }) => (
               <span
-                className={`text-sm font-medium transition-colors hover:text-foreground ${
+                className={`hover:text-foreground text-sm font-medium transition-colors ${
                   isActive ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >
@@ -65,21 +65,21 @@ export function SiteHeader() {
           <a
             href="https://github.com/Pony-Unicorn/web3-template"
             target="_blank"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm font-medium transition-colors"
             rel="noreferrer"
           >
             Github
-            <RiArrowRightUpLine className="w-3 h-3" />
+            <RiArrowRightUpLine className="h-3 w-3" />
           </a>
 
           <a
             href="https://x.com/shunfengge"
             target="_blank"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm font-medium transition-colors"
             rel="noreferrer"
           >
             X
-            <RiArrowRightUpLine className="w-3 h-3" />
+            <RiArrowRightUpLine className="h-3 w-3" />
           </a>
         </nav>
 

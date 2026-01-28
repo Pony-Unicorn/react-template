@@ -41,7 +41,7 @@ export default function App() {
       <WrapToaster />
       {/* debug info Container*/}
       {IS_LOCAL && (
-        <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none">
+        <div className="pointer-events-none fixed top-0 left-0 h-screen w-screen">
           <ScreenSize />
         </div>
       )}

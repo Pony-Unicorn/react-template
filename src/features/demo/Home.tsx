@@ -33,24 +33,24 @@ const createCommandStr = 'pnpm dlx degit Pony-Unicorn/web3-template my-project'
 
 export default function Home() {
   return (
-    <div className="py-8 px-6 max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl px-6 py-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex flex-col items-center gap-4 mb-8">
-          <h1 className="text-4xl font-bold text-center">
+        <div className="mb-8 flex flex-col items-center gap-4">
+          <h1 className="text-center text-4xl font-bold">
             Bolt 是构建 Dapp 的新起点
           </h1>
-          <p className="text-lg text-muted-foreground text-center">
+          <p className="text-muted-foreground text-center text-lg">
             快速启动，模块清晰，组件现代，是你构建下一代 Web3 应用的理想起点
           </p>
           <CopyButton value={createCommandStr}>{createCommandStr}</CopyButton>
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         {features.map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -62,7 +62,7 @@ export default function Home() {
               <CardContent className="flex flex-col gap-2 pt-6">
                 <span className="text-2xl">{feature.icon}</span>
                 <h3 className="text-xl font-semibold">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   {feature.description}
                 </p>
               </CardContent>
@@ -73,30 +73,30 @@ export default function Home() {
 
       <Card className="mb-8">
         <CardContent className="flex flex-col gap-4 pt-6">
-          <h2 className="text-2xl font-semibold text-center">框架信息</h2>
-          <div className="grid grid-cols-2 gap-4 max-w-100 mx-auto">
-            <div className="flex gap-2 items-center">
-              <span className="text-sm font-medium text-muted-foreground">
+          <h2 className="text-center text-2xl font-semibold">框架信息</h2>
+          <div className="mx-auto grid max-w-100 grid-cols-2 gap-4">
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground text-sm font-medium">
                 版本:
               </span>
               <Badge variant="secondary">{VERSION}</Badge>
             </div>
-            <div className="flex gap-2 items-center">
-              <span className="text-sm font-medium text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground text-sm font-medium">
                 模式:
               </span>
               <Badge variant="outline">{env.VITE_APP_MODE}</Badge>
             </div>
-            <div className="flex gap-2 items-center">
-              <span className="text-sm font-medium text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground text-sm font-medium">
                 使用测试网:
               </span>
               <Badge variant={IS_DEV ? 'destructive' : 'outline'}>
                 {IS_DEV.toString().toUpperCase()}
               </Badge>
             </div>
-            <div className="flex gap-2 items-center">
-              <span className="text-sm font-medium text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground text-sm font-medium">
                 最后更新:
               </span>
               <Badge variant="secondary">2025-12-8</Badge>
@@ -106,7 +106,7 @@ export default function Home() {
       </Card>
 
       <div>
-        <h2 className="text-2xl font-semibold text-center mb-4">技术栈</h2>
+        <h2 className="mb-4 text-center text-2xl font-semibold">技术栈</h2>
         <div className="flex flex-wrap justify-center gap-3">
           {[
             'React Router',

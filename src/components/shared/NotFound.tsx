@@ -12,24 +12,24 @@ interface NotFoundProps {
 
 export default function NotFound({ message, details, stack }: NotFoundProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-24 min-h-[60vh]">
+    <div className="flex min-h-[60vh] flex-col items-center justify-center py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex flex-col items-center gap-4 mb-6">
+        <div className="mb-6 flex flex-col items-center gap-4">
           <div className="mb-2">
             <FuzzyText baseIntensity={0.3} color="#ee9a00ff">
               {message}
             </FuzzyText>
           </div>
 
-          <p className="text-lg text-muted-foreground text-center">{details}</p>
+          <p className="text-muted-foreground text-center text-lg">{details}</p>
 
           {stack && (
-            <div className="p-4 w-full overflow-auto">
-              <code className="text-xs font-mono bg-muted p-1 rounded">
+            <div className="w-full overflow-auto p-4">
+              <code className="bg-muted rounded p-1 font-mono text-xs">
                 {stack}
               </code>
             </div>

@@ -23,10 +23,10 @@ import {
 
 export default function Preview() {
   return (
-    <div className="py-8 px-6 max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl px-6 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold mb-3">组件预览</h1>
-        <p className="text-sm text-muted-foreground">
+        <h1 className="mb-3 text-2xl font-bold">组件预览</h1>
+        <p className="text-muted-foreground text-sm">
           展示项目中的状态管理方案与 UI 组件使用示例，包括 Zustand Store、自定义
           Hooks 以及 Radix UI Themes 与 Sonner 集成
         </p>
@@ -61,8 +61,8 @@ function UseComputedStateSection() {
 
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <p className="text-sm text-muted-foreground">真实值（数字）：</p>
-          <div className="flex gap-3 items-center flex-wrap">
+          <p className="text-muted-foreground text-sm">真实值（数字）：</p>
+          <div className="flex flex-wrap items-center gap-3">
             <Input
               type="number"
               value={realValue}
@@ -84,10 +84,10 @@ function UseComputedStateSection() {
 
         <Separator />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card className="bg-muted/50">
-            <CardContent className="p-4 flex flex-col gap-2">
-              <p className="text-sm text-muted-foreground">
+            <CardContent className="flex flex-col gap-2 p-4">
+              <p className="text-muted-foreground text-sm">
                 派生显示值（格式化为人民币）：
               </p>
               <p className="text-xl font-medium">{displayValue}</p>
@@ -95,8 +95,8 @@ function UseComputedStateSection() {
           </Card>
 
           <Card className="bg-muted/50">
-            <CardContent className="p-4 flex flex-col gap-2">
-              <p className="text-sm text-muted-foreground">
+            <CardContent className="flex flex-col gap-2 p-4">
+              <p className="text-muted-foreground text-sm">
                 额外派生（平方，仅示例）：
               </p>
               <p className="text-xl font-medium">{squared}</p>
@@ -107,8 +107,8 @@ function UseComputedStateSection() {
         <Separator />
 
         <div className="flex flex-col gap-2">
-          <p className="text-sm text-muted-foreground">快速操作：</p>
-          <div className="flex gap-3 flex-wrap">
+          <p className="text-muted-foreground text-sm">快速操作：</p>
+          <div className="flex flex-wrap gap-3">
             <Button onClick={() => setRealValue(66)}>设为 66</Button>
             <Button onClick={() => setRealValue(1000)}>设为 1000</Button>
             <Button onClick={() => setRealValue((prev) => prev * 10)}>
@@ -148,7 +148,7 @@ function ZustandComputedStateSection() {
       <CardContent className="flex flex-col gap-4">
         <div className="grid grid-cols-1 gap-4">
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-muted-foreground">姓氏：</p>
+            <p className="text-muted-foreground text-sm">姓氏：</p>
             <Input
               value={firstName}
               onChange={(e) => updateFirstName(e.target.value)}
@@ -156,7 +156,7 @@ function ZustandComputedStateSection() {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-muted-foreground">名字：</p>
+            <p className="text-muted-foreground text-sm">名字：</p>
             <Input
               value={lastName}
               onChange={(e) => updateLastName(e.target.value)}
@@ -164,7 +164,7 @@ function ZustandComputedStateSection() {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-sm text-muted-foreground">年龄：</p>
+            <p className="text-muted-foreground text-sm">年龄：</p>
             <Input
               type="number"
               value={age}
@@ -176,22 +176,22 @@ function ZustandComputedStateSection() {
 
         <Separator />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <Card className="bg-muted/50">
-            <CardContent className="p-4 flex flex-col gap-2">
-              <p className="text-sm text-muted-foreground">全名：</p>
+            <CardContent className="flex flex-col gap-2 p-4">
+              <p className="text-muted-foreground text-sm">全名：</p>
               <p className="text-lg font-medium">{fullName || '(未填写)'}</p>
             </CardContent>
           </Card>
           <Card className="bg-muted/50">
-            <CardContent className="p-4 flex flex-col gap-2">
-              <p className="text-sm text-muted-foreground">首字母：</p>
+            <CardContent className="flex flex-col gap-2 p-4">
+              <p className="text-muted-foreground text-sm">首字母：</p>
               <p className="text-lg font-medium">{initials || '-'}</p>
             </CardContent>
           </Card>
           <Card className="bg-muted/50">
-            <CardContent className="p-4 flex flex-col gap-2">
-              <p className="text-sm text-muted-foreground">状态：</p>
+            <CardContent className="flex flex-col gap-2 p-4">
+              <p className="text-muted-foreground text-sm">状态：</p>
               <div>
                 <Badge variant={isAdult ? 'default' : 'secondary'}>
                   {isAdult ? '成年' : '未成年'}
@@ -204,8 +204,8 @@ function ZustandComputedStateSection() {
         <Separator />
 
         <div className="flex flex-col gap-2">
-          <p className="text-sm text-muted-foreground">快速填充示例：</p>
-          <div className="flex gap-3 flex-wrap">
+          <p className="text-muted-foreground text-sm">快速填充示例：</p>
+          <div className="flex flex-wrap gap-3">
             <Button
               onClick={() => {
                 updateFirstName('张')
@@ -249,7 +249,7 @@ function SonnerDemo() {
         <CardDescription>Sonner Toast 弹窗示例</CardDescription>
       </CardHeader>
 
-      <CardContent className="flex gap-3 flex-wrap">
+      <CardContent className="flex flex-wrap gap-3">
         <Button
           onClick={() => {
             toast('This is a toast')

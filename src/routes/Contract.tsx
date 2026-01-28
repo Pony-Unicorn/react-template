@@ -121,7 +121,7 @@ export default function Page() {
 
   if (!isConnected) {
     return (
-      <div className="py-8 px-6 max-w-4xl mx-auto">
+      <div className="mx-auto max-w-4xl px-6 py-8">
         <Card>
           <CardHeader>
             <CardTitle>合约交互示例</CardTitle>
@@ -140,7 +140,7 @@ export default function Page() {
 
   if (!contractAddress) {
     return (
-      <div className="py-8 px-6 max-w-4xl mx-auto">
+      <div className="mx-auto max-w-4xl px-6 py-8">
         <Card>
           <CardHeader>
             <CardTitle>合约交互示例</CardTitle>
@@ -168,7 +168,7 @@ export default function Page() {
       : '0'
 
   return (
-    <div className="py-8 px-6 max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl px-6 py-8">
       <div className="flex flex-col gap-6">
         <Card>
           <CardHeader>
@@ -198,7 +198,7 @@ export default function Page() {
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">合约地址:</span>
-              <code className="text-xs bg-muted p-1 rounded">
+              <code className="bg-muted rounded p-1 text-xs">
                 {contractAddress}
               </code>
             </div>
@@ -215,11 +215,11 @@ export default function Page() {
           <CardContent>
             <div className="flex items-baseline gap-2">
               <span className="text-4xl font-bold">{formattedBalance}</span>
-              <span className="text-lg text-muted-foreground">
+              <span className="text-muted-foreground text-lg">
                 {tokenSymbol}
               </span>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-muted-foreground mt-2 text-xs">
               地址: {address}
             </p>
           </CardContent>
@@ -235,7 +235,7 @@ export default function Page() {
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <div>
-              <label className="text-sm font-medium mb-1 block">接收地址</label>
+              <label className="mb-1 block text-sm font-medium">接收地址</label>
               <Input
                 placeholder="0x..."
                 value={recipient}
@@ -244,7 +244,7 @@ export default function Page() {
             </div>
 
             <div>
-              <label className="text-sm font-medium mb-1 block">转账金额</label>
+              <label className="mb-1 block text-sm font-medium">转账金额</label>
               <Input
                 type="number"
                 placeholder="0.0"
