@@ -42,7 +42,7 @@ export default function NotFound({ message, details, stack }: NotFoundProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Button size="lg" render={<Link to="/" />}>
+        <Button size="lg" nativeButton={false} render={<Link to="/" />}>
           <RiHomeLine className="mr-2 h-4 w-4" />
           Go Home
         </Button>

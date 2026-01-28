@@ -403,11 +403,8 @@ pnpm dlx shadcn@latest diff [component] # 检查组件更新
 
 - [ ] **OpenCode 插件开发**
   - [ ] Skill
-    - Git Commit Helper 已完成
     - ky、react-query、表单等如何写都是三方库，
       定义项目规范、架构约定、最佳实践，还是以文档的形式，然后 skill 加载的方式，或者每次对话都携带最佳实践/规范
-  - [ ] Slash Command
-    - git-commit 已完成
 
 - [ ] **参考资源整理**
   - [agents.md 规范](https://github.com/agentsmd/agents.md)
