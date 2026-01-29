@@ -13,6 +13,9 @@ import {
 } from '~/components/ui/card'
 import { Input } from '~/components/ui/input'
 import { Separator } from '~/components/ui/separator'
+import { Box } from '~/components/layout/box'
+import { Flex } from '~/components/layout/flex'
+import { Grid } from '~/components/layout/grid'
 import { useComputedState } from '~/hooks/useComputedState'
 import {
   selectFullName,
@@ -36,8 +39,112 @@ export default function Preview() {
         <UseComputedStateSection />
         <ZustandComputedStateSection />
         <SonnerDemo />
+        <LayoutDemo />
       </div>
     </div>
+  )
+}
+
+function LayoutDemo() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>布局组件示例</CardTitle>
+        <CardDescription>
+          展示 Box、Flex、Grid 等布局原语的使用，配合 Tailwind Utility
+          实现语义化布局
+        </CardDescription>
+      </CardHeader>
+
+      <CardContent className="flex flex-col gap-8">
+        {/* Box Section */}
+        <section className="flex flex-col gap-4">
+          <h3 className="text-lg font-medium">Box</h3>
+          <p className="text-muted-foreground text-sm">
+            最基础的容器，支持 Padding、Margin、宽高及 Display 设置。
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Box p="4" className="bg-primary/10 border-primary/20 rounded-lg border border-dashed">
+              Box p="4"
+            </Box>
+            <Box px="8" py="2" className="bg-primary/10 border-primary/20 rounded-lg border border-dashed">
+              Box px="8" py="2"
+            </Box>
+            <Box width="32" height="12" className="bg-primary/10 border-primary/20 rounded-lg border border-dashed flex items-center justify-center">
+              Fixed Size
+            </Box>
+          </div>
+        </section>
+
+        <Separator />
+
+        {/* Flex Section */}
+        <section className="flex flex-col gap-4">
+          <h3 className="text-lg font-medium">Flex</h3>
+          <p className="text-muted-foreground text-sm">
+            Flexbox 容器，支持方向、对齐、间距等属性。
+          </p>
+          <div className="flex flex-col gap-6">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground italic">
+                Default (Row + Gap 4 + Align Center)
+              </p>
+              <Flex gap="4" align="center" className="bg-muted/30 p-4 rounded-lg border border-dashed">
+                <Box className="size-10 bg-blue-500/20 border border-blue-500/30 rounded" />
+                <Box className="size-14 bg-blue-500/20 border border-blue-500/30 rounded" />
+                <Box className="size-8 bg-blue-500/20 border border-blue-500/30 rounded" />
+              </Flex>
+            </div>
+
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground italic">
+                Column + Justify Between + Height 40
+              </p>
+              <Flex direction="column" justify="between" height="40" className="bg-muted/30 p-4 rounded-lg border border-dashed">
+                <Box className="h-8 bg-green-500/20 border border-green-500/30 rounded px-2 flex items-center">Top</Box>
+                <Box className="h-8 bg-green-500/20 border border-green-500/30 rounded px-2 flex items-center">Bottom</Box>
+              </Flex>
+            </div>
+          </div>
+        </section>
+
+        <Separator />
+
+        {/* Grid Section */}
+        <section className="flex flex-col gap-4">
+          <h3 className="text-lg font-medium">Grid</h3>
+          <p className="text-muted-foreground text-sm">
+            Grid 容器，支持列数、行数、间距等网格属性。
+          </p>
+          <div className="flex flex-col gap-6">
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground italic">
+                Columns 3 + Gap 4
+              </p>
+              <Grid columns="3" gap="4" className="bg-muted/30 p-4 rounded-lg border border-dashed">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <Box key={i} p="4" className="bg-purple-500/20 border border-purple-500/30 rounded text-center font-mono">
+                    {i}
+                  </Box>
+                ))}
+              </Grid>
+            </div>
+
+            <div>
+              <p className="mb-2 text-xs font-medium text-muted-foreground italic">
+                Columns 2 + Flow Col
+              </p>
+              <Grid columns="2" flow="col" gap="2" className="bg-muted/30 p-4 rounded-lg border border-dashed">
+                <Box className="bg-orange-500/20 border border-orange-500/30 rounded p-2">Item 1 (Flow Col)</Box>
+                <Box className="bg-orange-500/20 border border-orange-500/30 rounded p-2">Item 2</Box>
+                <Box className="bg-orange-500/20 border border-orange-500/30 rounded p-2">Item 3</Box>
+                <Box className="bg-orange-500/20 border border-orange-500/30 rounded p-2">Item 4</Box>
+              </Grid>
+            </div>
+          </div>
+        </section>
+      </CardContent>
+    </Card>
   )
 }
 
