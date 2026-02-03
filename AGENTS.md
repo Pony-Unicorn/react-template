@@ -243,6 +243,29 @@ const syncResult = safeSync(() => riskySyncOperation())
 
 ---
 
+## React Performance & Best Practices
+
+### Bundle Size & Loading
+
+- **No Barrel Files**: 避免使用 barrel files（`index.ts` 导出所有内容），直接从源文件导入以利于 Tree Shaking。
+- **Lazy Loading**: 对非首屏的重型组件（如富文本编辑器、图表）使用 `React.lazy` 和 `Suspense`。
+- **Defer Non-Critical**: 对分析工具、日志等非关键第三方库进行延迟加载。
+
+### Re-render Optimization
+
+- **State Localization**: 将状态下沉到最需要它的组件，避免全局 context 导致的无谓渲染。
+- **Memoization**: 对昂贵的计算使用 `useMemo`，对纯组件使用 `React.memo`，但不要过度优化简单逻辑。
+- **Stable References**: 使用 `useCallback` 保持函数引用稳定，特别是传递给子组件的 prop 时。
+- **Context Splitting**: 将频繁变化的 context 与静态 context 分离，避免不必要的消费者重渲染。
+
+### JavaScript Performance
+
+- **Map/Set**: 频繁查找操作优先使用 `Map` (Key-Value) 或 `Set` (Membership)，实现 O(1) 复杂度。
+- **RegExp Hoisting**: 避免在 render 循环中创建 `RegExp`，应在组件外或使用 `useMemo` 创建。
+- **Immutable Operations**: 使用 `toSorted()`, `toReversed()` 等不可变方法，替代会修改原数组的 `sort()`, `reverse()`。
+
+---
+
 ## Stack & Tooling
 
 - UI: React 19 + React Router 7

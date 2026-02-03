@@ -6,12 +6,19 @@
     "context7": {
       "httpUrl": "https://mcp.context7.com/mcp",
       "headers": {
-        "CONTEXT7_API_KEY": "ctx7sk-cd402528-10a0-4a87-b3ea-83ee379614d5",
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}",
         "Accept": "application/json, text/event-stream"
       }
     },
     "exa": {
       "httpUrl": "https://mcp.exa.ai/mcp"
+    },
+    "grep": {
+      "httpUrl": "https://mcp.grep.app"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
     },
     "chrome-devtools": {
       "command": "npx",
