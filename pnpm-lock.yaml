@@ -19,7 +19,7 @@ importers:
         version: 1.8.17(@types/react@19.2.9)(bufferutil@4.1.0)(fastestsmallesttextencoderdecoder@1.0.22)(react@19.2.3)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.3))(utf-8-validate@5.0.10)(zod@4.3.5)
       '@reown/appkit-adapter-wagmi':
         specifier: ^1.8.17
-        version: 1.8.17(a6e8a49b829fba8a6abab3c1b4a85022)
+        version: 1.8.17(5ucgu226y2bswmroushnbl335q)
       '@t3-oss/env-core':
         specifier: ^0.13.10
         version: 0.13.10(typescript@5.9.3)(valibot@1.2.0(typescript@5.9.3))(zod@4.3.5)
@@ -50,6 +50,9 @@ importers:
       react-dom:
         specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
+      react-hook-form:
+        specifier: ^7.71.1
+        version: 7.71.1(react@19.2.3)
       react-router:
         specifier: ^7.12.0
         version: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -2629,6 +2632,12 @@ packages:
     peerDependencies:
       react: ^19.2.3
 
+  react-hook-form@7.71.1:
+    resolution: {integrity: sha512-9SUJKCGKo8HUSsCO+y0CtqkqI5nNuaDqTxyqPsZPqIwudpj4rCrAz/jZV+jn57bx5gtZKOh3neQu94DXMc+w5w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+
   react-refresh@0.18.0:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
@@ -3747,7 +3756,7 @@ snapshots:
     dependencies:
       react: 19.2.3
 
-  '@reown/appkit-adapter-wagmi@1.8.17(a6e8a49b829fba8a6abab3c1b4a85022)':
+  '@reown/appkit-adapter-wagmi@1.8.17(5ucgu226y2bswmroushnbl335q)':
     dependencies:
       '@reown/appkit': 1.8.17(@types/react@19.2.9)(bufferutil@4.1.0)(fastestsmallesttextencoderdecoder@1.0.22)(react@19.2.3)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.3))(utf-8-validate@5.0.10)(zod@4.3.5)
       '@reown/appkit-common': 1.8.17(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.5)
@@ -6113,6 +6122,10 @@ snapshots:
     dependencies:
       react: 19.2.3
       scheduler: 0.27.0
+
+  react-hook-form@7.71.1(react@19.2.3):
+    dependencies:
+      react: 19.2.3
 
   react-refresh@0.18.0: {}
 

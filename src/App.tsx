@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import '~/app.css'
 import { ScreenSize } from '~/components/elements/ScreenSize'
 import NotFound from '~/components/shared/NotFound'
-import WrapToaster from '~/components/shared/WrapToaster'
+import { Toaster } from '~/components/ui/sonner'
 import { IS_LOCAL } from '~/constants/app'
 import AppKitProvider from '~/context/AppKitProvider'
 import Root from '~/Root'
@@ -13,10 +13,6 @@ import Home from '~/routes/Home'
 import Preview from '~/routes/Preview'
 
 export default function App() {
-  useEffect(() => {
-    document.documentElement.classList.add('dark')
-  }, [])
-
   return (
     <AppKitProvider>
       <BrowserRouter>
@@ -38,7 +34,7 @@ export default function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      <WrapToaster />
+      <Toaster />
       {/* debug info Container*/}
       {IS_LOCAL && (
         <div className="pointer-events-none fixed top-0 left-0 h-screen w-screen">

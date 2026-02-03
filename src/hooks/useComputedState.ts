@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 /**
  * useComputedState
@@ -8,77 +8,44 @@ import { useCallback, useMemo, useState } from 'react'
  * ### 功能特性
  * - 支持函数式更新：`setRealValue(prev => prev + 1)`
  * - 自动计算 displayValue = compute(realValue)
- * - compute 默认是恒等函数：v => v
- * - 类型安全，轻量无副作用
- *
- * ---
+ * - 性能优化：即便传入内联 compute 函数也不会导致多余重算
+ * - 容错处理：数据缺失 (null/undefined/NaN/空字符串) 默认显示 "--"
  *
  * ### 🧩 基本用法
  * ```tsx
- * const { realValue, displayValue, setRealValue } = useComputedState(10, v => v * 2);
- * // realValue = 10
- * // displayValue = 20
- * setRealValue(prev => prev + 1);
- * // realValue = 11
- * // displayValue = 22
+ * const { realValue, displayValue, setRealValue } = useComputedState<number>(10, v => v * 2);
+ * // realValue = 10, displayValue = "20"
  * ```
- *
- * ### 💰 示例：格式化金额显示
- * ```tsx
- * const { realValue, displayValue, setRealValue } = useComputedState(12345, v =>
- *   v.toLocaleString("zh-CN", { style: "currency", currency: "CNY" })
- * );
- *
- * <div>
- *   <input
- *     type="number"
- *     value={realValue}
- *     onChange={e => setRealValue(Number(e.target.value))}
- *   />
- *   <p>显示值：{displayValue}</p>
- * </div>
- * ```
- *
- * ### ⚙️ 默认 compute（无需自定义）
- * 模拟 useQuery 封装
- * ```tsx
- * const { realValue, displayValue, setRealValue } = useComputedState("hello");
- * // compute 默认为 v => v
- * // displayValue === realValue
- * ```
-  - 真实值（number、bigint、string）、显示值（string）、更新真实值函数=初始值、计算函数、
-  - 最佳实践：数据获取中使用 Skeleton 组件，数据获取失败整个区域/卡片显示错误提示，数据获取成功使用 compute 格式化显示
-  - 数据缺失/不适用（null/undefined/nan/ ""/0/0n ）使用简洁的 “--”
  */
 
-export type RealValueType = number | bigint | string
+export type RealValueType = number | bigint | string | null | undefined
 
-const defaultCompute = (v: RealValueType) => v.toString()
+const defaultCompute = (v: RealValueType): string => {
+  if (v === null || v === undefined || v === '' || Number.isNaN(v)) return '--'
+  return v.toString()
+}
 
 export function useComputedState<T extends RealValueType>(
   initialValue: T,
-  compute: (value: T) => string = defaultCompute
+  compute: (value: T) => string = defaultCompute as any
 ) {
   const [realValue, setRealValue] = useState<T>(initialValue)
 
-  // 根据 realValue 计算派生值
+  // 使用 ref 锁定 compute 函数，避免因外部传入内联函数导致 useMemo 频繁失效
+  const computeRef = useRef(compute)
+  computeRef.current = compute
+
   const displayValue = useMemo(() => {
     try {
-      return compute(realValue)
+      return computeRef.current(realValue)
     } catch (error) {
       console.warn('useComputedState compute error:', error)
       return defaultCompute(realValue)
     }
-  }, [realValue, compute])
+  }, [realValue]) // 仅在真实值变化时重新计算
 
-  // 支持函数式更新（与 useState 相同）
   const updateRealValue = useCallback((next: T | ((prev: T) => T)) => {
-    setRealValue((prev) => {
-      if (typeof next === 'function') {
-        return (next as (prev: T) => T)(prev)
-      }
-      return next
-    })
+    setRealValue(next)
   }, [])
 
   return { realValue, setRealValue: updateRealValue, displayValue }
