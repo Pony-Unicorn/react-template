@@ -52,6 +52,18 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 ---
 
+## 🤖 AI Coding Support
+
+本项目已内置 AI coding 支持，适配常见开发工具与协作流程：
+
+- **Codex** — 通过 `AGENTS.md` 约束项目规范与工作流
+- **Claude Code** — 通过 `CLAUDE.md` 提供编码指引
+- **Gemini CLI** — 通过 `AGENTS.md` 约束项目规范与工作流
+
+建议在使用 AI 辅助开发前先阅读上述文件，确保输出符合项目规范。
+
+---
+
 ## 📦 更新策略
 
 - 每月 10 号更新依赖（安全补丁 / 小版本更新 / 依赖适配）
