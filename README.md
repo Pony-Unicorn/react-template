@@ -72,16 +72,12 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 ## ✅ Todo List
 
-### 核心功能增强
-
 - [ ] **TanStack Query 优化**
   - [ ] 实现基于 Zod schema 的接口类型自动生成（替代手写类型）
 
 - [ ] **Web3 钱包交互优化**
   - [ ] 根据连接状态类型推断 address 和 chainId（TypeScript 类型收窄）
   - [ ] 添加钱包未连接时的友好 UI 提示组件
-
-### 组件库完善
 
 - [ ] **Callout 组件封装**
   - 支持类型：info / success / warning / error / default
