@@ -41,7 +41,6 @@ export default function Preview() {
   )
 }
 
-
 function UseComputedStateSection() {
   const { realValue, setRealValue, displayValue } = useComputedState<number>(
     1000,

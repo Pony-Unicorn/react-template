@@ -27,7 +27,7 @@ const defaultCompute = (v: RealValueType): string => {
 
 export function useComputedState<T extends RealValueType>(
   initialValue: T,
-  compute: (value: T) => string = defaultCompute as any
+  compute: (value: T) => string = defaultCompute
 ) {
   const [realValue, setRealValue] = useState<T>(initialValue)
 

@@ -1,7 +1,6 @@
-.claude/
-.cursor/
-docs/
-llms/
-build/
-node_modules/
-pnpm-lock.yaml
+# 忽略所有文件
+*
+
+# 只保留 src 目录
+!src
+!src/**

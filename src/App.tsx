@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import '~/app.css'
 import { ScreenSize } from '~/components/elements/ScreenSize'
