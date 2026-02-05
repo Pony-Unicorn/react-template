@@ -11,7 +11,7 @@ Bolt 基于 React Router、shadcn/ui、Tailwind CSS、Motion 以及钱包工具�
 - Clone project
 
 ```bash
-pnpm dlx degit Pony-Unicorn/web3-template my-project
+pnpm dlx degit Pony-Unicorn/react-template my-project
 
 cd my-project
 

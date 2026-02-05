@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "web3-template",
+  "name": "react-template",
   "compatibility_date": "2026-01-19",
   "assets": {
     "directory": "./dist",

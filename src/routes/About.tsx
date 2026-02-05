@@ -102,7 +102,7 @@ export default function About() {
                       </a>{' '}
                       or create{' '}
                       <a
-                        href="https://github.com/Pony-Unicorn/web3-template/issues"
+                        href="https://github.com/Pony-Unicorn/react-template/issues"
                         target="_blank"
                         className="text-primary hover:underline"
                         rel="noreferrer"
@@ -214,7 +214,7 @@ export default function About() {
                   size="lg"
                   render={
                     <a
-                      href="https://github.com/Pony-Unicorn/web3-template"
+                      href="https://github.com/Pony-Unicorn/react-template"
                       target="_blank"
                       rel="noopener noreferrer"
                     />
@@ -228,7 +228,7 @@ export default function About() {
                   size="lg"
                   render={
                     <a
-                      href="https://github.com/Pony-Unicorn/web3-template/issues"
+                      href="https://github.com/Pony-Unicorn/react-template/issues"
                       target="_blank"
                       rel="noopener noreferrer"
                     />

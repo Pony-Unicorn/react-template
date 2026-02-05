@@ -63,7 +63,7 @@ export function SiteHeader() {
           </NavLink>
 
           <a
-            href="https://github.com/Pony-Unicorn/web3-template"
+            href="https://github.com/Pony-Unicorn/react-template"
             target="_blank"
             className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm font-medium transition-colors"
             rel="noreferrer"

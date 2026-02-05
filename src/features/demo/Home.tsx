@@ -29,7 +29,7 @@ const features = [
   },
 ]
 
-const createCommandStr = 'pnpm dlx degit Pony-Unicorn/web3-template my-project'
+const createCommandStr = 'pnpm dlx degit Pony-Unicorn/react-template my-project'
 
 export default function Home() {
   return (
