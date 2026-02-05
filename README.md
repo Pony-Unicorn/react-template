@@ -52,6 +52,12 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 ---
 
+## 📐 规范与开发指南
+
+👉 **详细的技术规范、架构设计和 AI 提示词指南请参考：[AGENTS.md](./AGENTS.md)**
+
+---
+
 ## 🤖 AI Coding Support
 
 本项目已内置 AI coding 支持，适配常见开发工具与协作流程：

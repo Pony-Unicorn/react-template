@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-Bolt 前端模板（Web3 + AppKit）。
+Web3 dApp 前端模板（React + AppKit）。
 
 - 固定栈详见下文 Stack & Tooling
 - 禁止替代：axios、MUI、Chakra、React Spring（除非明确批准）
@@ -15,8 +15,11 @@ Bolt 前端模板（Web3 + AppKit）。
 pnpm dev          # 启动开发服务器
 pnpm build        # 构建生产版本（TypeScript 类型检查 + Vite 构建）
 pnpm preview      # 本地预览生产构建
-pnpm format       # 检查代码格式
-pnpm format-fix   # 自动修复代码格式
+pnpm lint         # ESLint 代码质量检查
+pnpm lint:fix     # ESLint 自动修复
+pnpm format       # Prettier 格式检查
+pnpm format:fix   # Prettier 自动修复
+pnpm check        # 运行 lint + format 检查
 pnpm deploy       # 部署到 Cloudflare Pages
 ```
 
@@ -31,6 +34,8 @@ pnpm deploy       # 部署到 Cloudflare Pages
 - `src/Root.tsx` 布局（Header/Outlet/Footer）
 - `src/app.css` 全局样式 + 主题变量
 - `components.json` shadcn/ui 配置
+- `eslint.config.js` ESLint 配置
+- `prettier.config.js` Prettier 配置
 
 ```
 src/
@@ -64,6 +69,19 @@ openspec/              # OpenSpec 变更与规范产物
 - shadcn/ui 组件：`src/components/ui`
 - 全局样式/主题：`src/app.css`
 - AppKit/Wagmi Provider：`src/context/AppKitProvider.tsx`
+
+---
+
+## Code Quality
+
+- **ESLint**: 代码质量检查（逻辑错误、最佳实践）
+  - 配置：`eslint.config.js`
+  - 包含：TypeScript、React、React Hooks 规则
+- **Prettier**: 代码格式化（缩进、引号、分号）
+  - 配置：`prettier.config.js`
+  - 插件：organize-imports、tailwindcss
+
+提交前运行 `pnpm check` 确保代码质量。
 
 ---
 
