@@ -80,6 +80,7 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 ## ✅ Todo List
 
+- [ ] 移动端的适配
 - [ ] **TanStack Query 优化**
   - [ ] 实现基于 Zod schema 的接口类型自动生成（替代手写类型）
 
@@ -91,8 +92,6 @@ pnpm up -L --interactive  # 交互式选择升级依赖
   - 支持类型：info / success / warning / error / default
   - 基于 shadcn/ui Alert 组件实现统一样式
 - [ ] ky 封装
-
-### 安全性增强
 
 - [ ] **认证安全**
   - [ ] 实现基于 HttpOnly Cookie 的 Token 管理
