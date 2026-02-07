@@ -68,7 +68,7 @@ pnpm up -L --interactive  # 交互式选择升级依赖
 
 建议在使用 AI 辅助开发前先阅读上述文件，确保输出符合项目规范。
 
-[更多查看](https://www.yuque.com/pony13500815917/computer/xt0tdduk7mpt5bdf?singleDoc)
+[更多查看](https://github.com/Pony-Unicorn/ai-coding-kit)
 
 ---
 
