@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
-import '~/app.css'
 import { ScreenSize } from '~/components/elements/ScreenSize'
 import NotFound from '~/components/shared/NotFound'
 import { Toaster } from '~/components/ui/sonner'
